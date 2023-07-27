@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace C_Basics
@@ -102,6 +104,62 @@ namespace C_Basics
             Console.WriteLine(logicalOp.PrintLargestNumber(3, 5, 7));
 
 
+            //Arrays Assignment 1
+            //1
+            Console.WriteLine("\n------------------------------------");
+            Console.WriteLine(calculator.Sum(4.5, 4));
+            Console.WriteLine(calculator.Subtract(4.5, 7));
+            Console.WriteLine(calculator.Divide(4.5, 8));
+            Console.WriteLine(calculator.Multiply(4.5, 2));
+            Console.WriteLine(calculator.Average(4.5, 2, 2.3));
+
+            //2
+            logicalOp.PrintArrayProgress();
+
+            //3
+            int[] array = new int[51];
+            Console.WriteLine();
+            foreach (int element in logicalOp.EvenArray(array))
+            {
+                Console.Write(element + " ");
+                Thread.Sleep(25);
+            }
+
+            //4
+            int[] averageArray = { 12, 10, 24 };
+            Console.WriteLine("\n\n" + logicalOp.ArrayAverage(averageArray));
+
+            //5
+            string[] stringArray = { "apple", "banana", "horse", "shoe", "monitor" };
+            Console.WriteLine("\n" + logicalOp.IsStringInArray(stringArray, "horse"));
+
+            //6
+            int[] numberArray = { 1, 3, 2, 4, 5, 6, 7, 1, 2 };
+            Console.WriteLine("\n" + logicalOp.IsNumberInArray(numberArray, 4));
+
+            //7
+            Console.WriteLine();
+            logicalOp.PrintPattern();
+
+            //8
+            Console.WriteLine();
+            int[] newArray = logicalOp.DeleteElementFromArray(numberArray, 4);
+            foreach (int element in newArray)
+            {
+                Console.Write(element + " ");
+            }
+
+            //9
+            Console.WriteLine("\n" + logicalOp.ReturnSecondSmallestElement(numberArray));
+
+            //10
+            Console.WriteLine();
+            int[] emptyArray = new int[numberArray.Length];
+            logicalOp.CopyArray(numberArray, emptyArray);
+            foreach (int element in emptyArray)
+            {
+                Console.Write(element + " ");
+            }
             Console.ReadLine();
         }
 
@@ -176,5 +234,5 @@ namespace C_Basics
             Console.WriteLine("Area = " + Math.PI * Math.Pow(radius, 2));
         }
     }
-    
+
 }

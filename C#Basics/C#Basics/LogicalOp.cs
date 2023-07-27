@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace C_Basics
@@ -120,16 +121,136 @@ namespace C_Basics
         //11
         public int PrintLargestNumber(int number1, int number2, int number3)
         {
-            return max(max(number1, number2), number3); 
+            return max(max(number1, number2), number3);
         }
 
         public int max(int number1, int number2)
         {
-            if(number1 > number2)
+            if (number1 > number2)
             {
                 return number1;
             }
             return number2;
+        }
+
+        //Arrays Assignemnt 1
+        public void PrintArrayProgress()
+        {
+            int[] array = new int[100];
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = i + 1;
+                Console.Write(array[i] + " ");
+                Thread.Sleep(25);
+            }
+        }
+
+        //3
+        public int[] EvenArray(int[] array)
+        {
+            int j = 0;
+            for (int i = 0; i <= 100; i += 2)
+            {
+                array[j] = i;
+                j++;
+            }
+
+            return array;
+        }
+
+        //4
+        public double ArrayAverage(int[] array)
+        {
+            double sum = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                sum += array[i];
+            }
+
+            return sum / array.Length;
+        }
+
+        //5
+        public Boolean IsStringInArray(string[] stringArray, string word)
+        {
+            foreach (string s in stringArray)
+            {
+                if (s.Equals(word))
+                {
+                    return true;
+                    break;
+                }
+            }
+            return false;
+        }
+
+        //6
+        public int IsNumberInArray(int[] array, int number)
+        {
+            int pos = 0;
+            foreach (int i in array)
+            {
+                if (number == i)
+                {
+                    return pos;
+                }
+                pos++;
+            }
+
+            return -1;
+        }
+
+        //7
+        public void PrintPattern()
+        {
+            //char[] array = new char[20];
+            //for(int i = 0; i <  array.Length; i+=2)
+            //{
+            //    array[i] = '-';
+            //    array[i + 1] = ' ';
+            //}
+            //array[20] = '\n'
+
+            //for(int i = 0; i < 10; i++)
+            //{
+            //    for(int j = 0; j < array.Length; j++)
+            //    {
+
+            //    }
+            //}
+
+            string[] array = new string[10];
+            string dashes = "- - - - - - - - - -";
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = dashes;
+                Console.WriteLine(array[i] + "\n");
+            }
+        }
+
+        //8
+        public int[] DeleteElementFromArray(int[] array, int number)
+        {
+            int numIdx = Array.IndexOf(array, number);
+            List<int> tmp = new List<int>(array);
+            tmp.RemoveAt(numIdx);
+
+            return tmp.ToArray();
+        }
+
+        //9
+        public int ReturnSecondSmallestElement(int[] array)
+        {
+            Array.Sort(array);
+            int[] distinct = array.Distinct().ToArray();
+            return distinct[1];
+        }
+
+        public void CopyArray(int[] arrayToCopy, int[] arrayToCopyInto)
+        {
+            arrayToCopy.CopyTo(arrayToCopyInto, 0);
+
         }
     }
 }
