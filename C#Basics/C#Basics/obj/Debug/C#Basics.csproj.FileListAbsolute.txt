@@ -1,0 +1,8 @@
+C:\Users\csabagyarmathy\source\repos\C#Basics\C#Basics\bin\Debug\C#Basics.exe.config
+C:\Users\csabagyarmathy\source\repos\C#Basics\C#Basics\bin\Debug\C#Basics.exe
+C:\Users\csabagyarmathy\source\repos\C#Basics\C#Basics\bin\Debug\C#Basics.pdb
+C:\Users\csabagyarmathy\source\repos\C#Basics\C#Basics\obj\Debug\C#Basics.csproj.AssemblyReference.cache
+C:\Users\csabagyarmathy\source\repos\C#Basics\C#Basics\obj\Debug\C#Basics.csproj.SuggestedBindingRedirects.cache
+C:\Users\csabagyarmathy\source\repos\C#Basics\C#Basics\obj\Debug\C#Basics.csproj.CoreCompileInputs.cache
+C:\Users\csabagyarmathy\source\repos\C#Basics\C#Basics\obj\Debug\C#Basics.exe
+C:\Users\csabagyarmathy\source\repos\C#Basics\C#Basics\obj\Debug\C#Basics.pdb
