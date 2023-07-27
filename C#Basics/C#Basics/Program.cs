@@ -160,9 +160,37 @@ namespace C_Basics
             {
                 Console.Write(element + " ");
             }
+
+            //Arrays assignment 3
+            Console.WriteLine("\n------------------------------------");
+            Console.WriteLine();
+            PrLists prLists = new PrLists();
+
+            //1
+            List<int> integerList = new List<int> { 1, 2, 3, 4, 5, 6, 7};
+            prLists.PrintList(integerList);
+
+            //2
+            Console.WriteLine();
+            prLists.AddToEndOfList(integerList, 8);
+            prLists.PrintList(integerList);
+
+            //3
+            Console.WriteLine();
+            prLists.PrintListFromValue(integerList, 3);
+
+            //4
+            Console.WriteLine();
+            prLists.PrintReverse(integerList);
+
+            //5
+
+
             Console.ReadLine();
         }
-
+        //----------------------------------------------------------------
+        //----------------------------------------------------------------
+        //----------------------------------------------------------------
         public static void PrintName()
         {
             Console.WriteLine("Hello");
