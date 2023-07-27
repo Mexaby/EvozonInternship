@@ -32,7 +32,7 @@ namespace C_Basics
             Console.WriteLine(+15 / 3 * 2 - 8 % 3);
             Console.WriteLine();
 
-            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("\n-----------------------------------------");
             //Assignemnt 2:
             //1
             PrintName();
@@ -41,19 +41,21 @@ namespace C_Basics
             PrintResults();
 
             //2
-            Console.WriteLine("\nSum = " + Sum(3, 4));
-            Console.WriteLine("Difference = " + Subtract(10, 4));
-            Console.WriteLine("Product = " + Multiply(3, 4));
-            Console.WriteLine("Quotient = " + Divide(10, 4));
+            Calculator calculator = new Calculator();
+
+            Console.WriteLine("\nSum = " + calculator.Sum(3, 4));
+            Console.WriteLine("Difference = " + calculator.Subtract(10, 4));
+            Console.WriteLine("Product = " + calculator.Multiply(3, 4));
+            Console.WriteLine("Quotient = " + calculator.Divide(10, 4));
 
             //3
             PrintLogo();
 
             //4
-            Console.WriteLine("\nAverage = " + Average(4, 7, 9));
+            Console.WriteLine("\nAverage = " + calculator.Average(4, 7, 9));
 
             //5
-            Console.WriteLine("\nRest = " + Rest(8, 3));
+            Console.WriteLine("\nRest = " + calculator.Rest(8, 3));
 
             //6
             Console.WriteLine("\nTemperature (C) = " + ConvertFahrenheitToCelsius(99));
@@ -66,6 +68,39 @@ namespace C_Basics
 
             //9
             CalculateAreaAndPerimeterOfCircle(4);
+
+
+            //Assignment 3
+            Console.WriteLine("\n------------------------------------");
+            LogicalOp logicalOp = new LogicalOp();
+
+            //3
+            Console.WriteLine("The larger number is " + logicalOp.CheckBiggerNumber(4, 1));
+
+            //4
+            Console.WriteLine(logicalOp.CheckText("This will not be  equal"));
+
+            //5
+            Console.WriteLine(logicalOp.CheckTestAndNumber("FastTrackIT", 2));
+
+            //6
+            Console.WriteLine(logicalOp.SnowAmount(6));
+
+            //7
+            Console.WriteLine(logicalOp.CheckNumber(4));
+
+            //8
+            logicalOp.PrintNumber(3);
+
+            //9
+            Console.WriteLine(logicalOp.IsNumberEven(4));
+
+            //10
+            Console.WriteLine(logicalOp.IsEligibleToVote(34));
+
+            //11
+            Console.WriteLine(logicalOp.PrintLargestNumber(3, 5, 7));
+
 
             Console.ReadLine();
         }
@@ -97,27 +132,6 @@ namespace C_Basics
             Console.WriteLine(+15 / 3 * 2 - 8 % 3);
         }
 
-        public static int Sum(int n, int m)
-        {
-            return n + m;
-        }
-
-        public static int Subtract(int n, int m)
-        {
-            return n - m;
-        }
-
-        public static float Multiply(int n, int m)
-        {
-            return n * m;
-        }
-
-        public static float Divide(int n, float m)
-        {
-            return n / m;
-        }
-
-
         public static void PrintLogo()
         {
             Console.WriteLine("\n  CCCC           /        /");
@@ -128,15 +142,7 @@ namespace C_Basics
             Console.WriteLine("  CCCC      /        /");
         }
 
-        public static float Average(int value1, int value2, float value3)
-        {
-            return (value1 + value2 + value3) / 3;
-        }
 
-        public static int Rest(int n, int m)
-        {
-            return n % m;
-        }
 
         public static double ConvertFahrenheitToCelsius(double temp)
         {
@@ -170,4 +176,5 @@ namespace C_Basics
             Console.WriteLine("Area = " + Math.PI * Math.Pow(radius, 2));
         }
     }
+    
 }
