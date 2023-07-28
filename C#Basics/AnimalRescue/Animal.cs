@@ -47,5 +47,7 @@ namespace AnimalRescue
 
         public abstract void play(Game game);
 
+        public abstract void speak();
+
     }
 }

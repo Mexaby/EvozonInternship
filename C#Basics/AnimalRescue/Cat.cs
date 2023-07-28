@@ -84,6 +84,11 @@ namespace AnimalRescue
             if (Hunger > 10) Hunger = 10;
             if (Happiness > 10) Happiness = 10;
         }
+
+        public override void speak()
+        {
+            Console.WriteLine("Meow");
+        }
     }
 
     
