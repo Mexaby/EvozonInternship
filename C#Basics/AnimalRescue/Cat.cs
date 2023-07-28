@@ -10,16 +10,15 @@ namespace AnimalRescue
     internal class Cat : Animal
     {
         private readonly string furColor;
-        private int hunger;
 
-        public Cat(string name, int age, int health, int hunger, int happiness, string preferredFood, string preferredRehabilitaton, string furColor) : base(name, age, health, hunger, happiness, preferredFood, preferredRehabilitaton)
+        public Cat(string name, int age, int health, int hunger, int happiness, string preferredFood, string preferredRehabilitaton, double weight, string furColor) : base(name, age, health, hunger, happiness, preferredFood, preferredRehabilitaton, weight)
         {
             this.furColor = furColor;
         }
 
         public string FurColor => furColor;
 
-        public override void eat(AnimalFood animalFood)
+        public override void Eat(AnimalFood animalFood)
         {
             if (animalFood.Name.Equals(PreferredFood))
             {
@@ -40,13 +39,13 @@ namespace AnimalRescue
             if (this.Happiness > 10) this.Happiness = 10;
         }
 
-        public override void sleep()
+        public override void Sleep()
         {
             Hunger += 3;
             if (Hunger < 0) Hunger = 0;
         }
 
-        public override void rehabilitate(RehabilitationActivity activity)
+        public override void Rehabilitate(RehabilitationActivity activity)
         {
             if (activity.Name.Equals(PreferredRehabilitaton))
             {
@@ -65,7 +64,7 @@ namespace AnimalRescue
 
         }
 
-        public override void idle()
+        public override void Idle()
         {
             Happiness--;
             Health--;
@@ -76,7 +75,7 @@ namespace AnimalRescue
             if (Happiness < 0) Happiness = 0;
         }
 
-        public override void play(Game game)
+        public override void Play()
         {
             Happiness += 2;
             Hunger++;
@@ -85,7 +84,7 @@ namespace AnimalRescue
             if (Happiness > 10) Happiness = 10;
         }
 
-        public override void speak()
+        public override void Speak()
         {
             Console.WriteLine("Meow");
         }
