@@ -1,6 +1,0 @@
-*.dll
-/ref
-*.pdb
-.vs
-obj
-bin

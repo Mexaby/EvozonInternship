@@ -1,0 +1,8 @@
+C:\Repo\EvozonInternship\C#Basics\C#Basics\obj\Debug\C#Basics.csproj.AssemblyReference.cache
+C:\Repo\EvozonInternship\C#Basics\C#Basics\obj\Debug\C#Basics.csproj.SuggestedBindingRedirects.cache
+C:\Repo\EvozonInternship\C#Basics\C#Basics\obj\Debug\C#Basics.csproj.CoreCompileInputs.cache
+C:\Repo\EvozonInternship\C#Basics\C#Basics\bin\Debug\C#Basics.exe.config
+C:\Repo\EvozonInternship\C#Basics\C#Basics\bin\Debug\C#Basics.exe
+C:\Repo\EvozonInternship\C#Basics\C#Basics\bin\Debug\C#Basics.pdb
+C:\Repo\EvozonInternship\C#Basics\C#Basics\obj\Debug\C#Basics.exe
+C:\Repo\EvozonInternship\C#Basics\C#Basics\obj\Debug\C#Basics.pdb

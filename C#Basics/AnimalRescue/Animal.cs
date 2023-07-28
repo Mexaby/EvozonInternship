@@ -11,13 +11,14 @@ namespace AnimalRescue
     {
         private string name;
         private int age;
+        private int weight;
         private int health;
         private int hunger;
         private int happiness;
         private string preferredFood;
         private string preferredRehabilitaton;
 
-        public Animal(string name, int age, int health, int hunger, int happiness, string preferredFood, string preferredRehabilitaton)
+        public Animal(string name, int age, int health, int hunger, int happiness, string preferredFood, string preferredRehabilitaton, int weight)
         {
             this.name = name;
             this.age = age;
@@ -26,6 +27,7 @@ namespace AnimalRescue
             this.happiness = happiness;
             this.preferredFood = preferredFood;
             this.preferredRehabilitaton = preferredRehabilitaton;
+            this.weight = weight;
         }
 
         public string Name { get => name; set => name = value; }
@@ -35,19 +37,19 @@ namespace AnimalRescue
         public int Happiness { get => happiness; set => happiness = value; }
         public string PreferredFood { get => preferredFood; set => preferredFood = value; }
         public string PreferredRehabilitaton { get => preferredRehabilitaton; set => preferredRehabilitaton = value; }
+        public int Weight { get => weight; set => weight = value; }
 
+        public abstract void Eat(AnimalFood food);
 
-        public abstract void eat(AnimalFood food);
+        public abstract void Sleep();
 
-        public abstract void sleep();
+        public abstract void Rehabilitate(RehabilitationActivity activity);
 
-        public abstract void rehabilitate(RehabilitationActivity activity);
+        public abstract void Idle();
 
-        public abstract void idle();
+        public abstract void Play();
 
-        public abstract void play(Game game);
-
-        public abstract void speak();
+        public abstract void Speak();
 
     }
 }
