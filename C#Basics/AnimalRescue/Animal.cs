@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AnimalRescue
 {
     [ToString]
-    internal abstract class Animal
+    abstract class Animal
     {
         private string name;
         private int age;
@@ -37,61 +37,15 @@ namespace AnimalRescue
         public string PreferredRehabilitaton { get => preferredRehabilitaton; set => preferredRehabilitaton = value; }
 
 
-        public void eat(AnimalFood animalFood)
-        {
-            if (animalFood.Name.Equals(preferredFood))
-            {
-                hunger -= 5;
-                happiness += 4;
+        public abstract void eat(AnimalFood animalFood);
 
-            }
-            else
-            { 
-                hunger -= 3;
-                happiness += 2;
-            }
+        public abstract void sleep();
 
-            health++;
+        public abstract void rehabilitate(RehabilitationActivity activity);
 
-            if (health > 10) health = 10;
-            if (hunger < 0) hunger = 0;
-            if (happiness > 10) happiness = 10;
-        }
+        public abstract void idle();
 
-        public void sleep()
-        {
-            hunger += 3;
-            if (hunger < 0) hunger = 0;
-        }
-
-        public void rehabilitate(RehabilitationActivity activity)
-        {
-            if (activity.Name.Equals(preferredRehabilitaton))
-            {
-                health += 5;
-                happiness += 4;
-
-            } else
-            {
-                health += 3;
-                happiness += 2;
-            }
-
-            if (health > 10) health = 10;
-            if (happiness > 10) happiness = 10;
-
-        }
-
-        public void idle()
-        {
-            happiness--;
-            health--;
-            hunger -= 3;
-
-            if(hunger < 0) hunger=0;
-            if(health < 0) health = 0;
-            if(happiness < 0) happiness = 0;
-        }
+        public abstract void play(Game game);
 
     }
 }

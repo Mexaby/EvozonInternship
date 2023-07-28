@@ -17,14 +17,12 @@ namespace AnimalRescue
             RehabilitationActivity activity = new RehabilitationActivity("walking");
             Veterinarian vet = new Veterinarian("Doug", "dogs");
             Game game = new Game(adopter, dog, vet);
+            
+            Console.WriteLine(dog.ToString());
+
+            dog.eat(food);
 
             Console.WriteLine(dog.ToString());
-            Console.WriteLine(cat.ToString());
-            Console.WriteLine(adopter.ToString());
-            Console.WriteLine(food.ToString());
-            Console.WriteLine(activity.ToString());
-            Console.WriteLine(vet.ToString());
-            Console.WriteLine(game.ToString());
 
             Console.ReadKey();
         }
