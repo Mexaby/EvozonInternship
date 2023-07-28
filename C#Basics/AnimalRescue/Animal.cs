@@ -71,7 +71,26 @@ namespace AnimalRescue
                 health += 5;
                 happiness += 4;
 
+            } else
+            {
+                health += 3;
+                happiness += 2;
             }
+
+            if (health > 10) health = 10;
+            if (happiness > 10) happiness = 10;
+
+        }
+
+        public void idle()
+        {
+            happiness--;
+            health--;
+            hunger -= 3;
+
+            if(hunger < 0) hunger=0;
+            if(health < 0) health = 0;
+            if(happiness < 0) happiness = 0;
         }
 
     }
