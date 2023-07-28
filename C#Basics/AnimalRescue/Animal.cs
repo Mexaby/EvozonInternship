@@ -37,7 +37,7 @@ namespace AnimalRescue
         public string PreferredRehabilitaton { get => preferredRehabilitaton; set => preferredRehabilitaton = value; }
 
 
-        public abstract void eat(AnimalFood animalFood);
+        public abstract void eat(AnimalFood food);
 
         public abstract void sleep();
 
