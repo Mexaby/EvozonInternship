@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AnimalRescue
 {
     [ToString]
-    internal class AnimalFood
+    abstract class AnimalFood
     {
         private string name;
         private int price;
