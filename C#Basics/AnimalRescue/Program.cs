@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace C_Basics.AnimalRescue
+namespace AnimalRescue
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Gay");
-
-            Console.ReadKey();
         }
     }
 }
