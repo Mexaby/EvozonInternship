@@ -178,7 +178,6 @@ namespace C_Basics
                 if (s.Equals(word))
                 {
                     return true;
-                    break;
                 }
             }
             return false;
