@@ -171,7 +171,7 @@ namespace C_Basics
         }
 
         //5
-        public Boolean IsStringInArray(string[] stringArray, string word)
+        public bool IsStringInArray(string[] stringArray, string word)
         {
             foreach (string s in stringArray)
             {
