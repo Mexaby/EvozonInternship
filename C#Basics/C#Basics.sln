@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C#Basics", "C#Basics\C#Basics.csproj", "{D7AD2621-43B2-44F9-B761-25C2FAEFA52E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalRescue", "AnimalRescue\AnimalRescue.csproj", "{D535887C-3ACB-438F-8701-D3AADD064D9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D7AD2621-43B2-44F9-B761-25C2FAEFA52E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7AD2621-43B2-44F9-B761-25C2FAEFA52E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7AD2621-43B2-44F9-B761-25C2FAEFA52E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D535887C-3ACB-438F-8701-D3AADD064D9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D535887C-3ACB-438F-8701-D3AADD064D9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D535887C-3ACB-438F-8701-D3AADD064D9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D535887C-3ACB-438F-8701-D3AADD064D9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

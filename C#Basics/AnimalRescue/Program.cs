@@ -10,6 +10,7 @@ namespace AnimalRescue
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
