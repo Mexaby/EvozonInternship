@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalRescue
 {
+    [ToString]
     internal class Animal
     {
         private string name;
@@ -34,5 +35,7 @@ namespace AnimalRescue
         public int Happiness { get => happiness; set => happiness = value; }
         public string PreferredFood { get => preferredFood; set => preferredFood = value; }
         public string PreferredRehabilitaton { get => preferredRehabilitaton; set => preferredRehabilitaton = value; }
+
+
     }
 }

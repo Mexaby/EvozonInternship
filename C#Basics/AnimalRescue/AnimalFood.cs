@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalRescue
 {
+    [ToString]
     internal class AnimalFood
     {
         private string name;

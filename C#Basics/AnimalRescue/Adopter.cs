@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalRescue
 {
+    [ToString]
     internal class Adopter
     {
         private string name;

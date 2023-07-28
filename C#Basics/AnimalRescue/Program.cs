@@ -10,9 +10,17 @@ namespace AnimalRescue
     {
         static void Main(string[] args)
         {
-            Animal dog = new Animal("Bobby", 8, 7, 2, 6, "Pedigree", "walking");
+            Animal dog = new Animal(null, -1, -1 ,-1, -1, null, null);
+            dog.Name = "Bobby";
+            dog.Age = 8;
+            dog.Health = 7;
+            dog.Hunger = 2;
+            dog.Happiness = 6;
+            dog.PreferredFood = "Pedigree";
+            dog.PreferredRehabilitaton = "Walking";
+
             Adopter adopter = new Adopter("Millie", 3400);
-            AnimalFood food = new AnimalFood("Pedigree", 55, new DateTime(2024, 05, 14, 9, 0, 0), true);
+            AnimalFood food = new AnimalFood("Pedigree", 55, new DateTime(2024, 05, 14, 12, 0, 0), true);
             RehabilitationActivity activity = new RehabilitationActivity("walking");
             Veterinarian vet = new Veterinarian("Doug", "dogs");
             Game game = new Game(adopter, dog, vet);
