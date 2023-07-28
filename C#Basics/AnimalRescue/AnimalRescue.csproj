@@ -55,6 +55,8 @@
     <Compile Include="Adopter.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="AnimalFood.cs" />
+    <Compile Include="Cat.cs" />
+    <Compile Include="Dog.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

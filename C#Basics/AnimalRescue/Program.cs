@@ -10,15 +10,8 @@ namespace AnimalRescue
     {
         static void Main(string[] args)
         {
-            Animal dog = new Animal(null, -1, -1 ,-1, -1, null, null);
-            dog.Name = "Bobby";
-            dog.Age = 8;
-            dog.Health = 7;
-            dog.Hunger = 2;
-            dog.Happiness = 6;
-            dog.PreferredFood = "Pedigree";
-            dog.PreferredRehabilitaton = "Walking";
-
+            Dog dog = new Dog("Bobby", 7, 7, 3, 5, "Pedigree", "walking", "German shepherd");
+            Cat cat = new Cat("Leo", 3, 5, 7, 3, "Whiskas", "climbing", "white and gray");
             Adopter adopter = new Adopter("Millie", 3400);
             AnimalFood food = new AnimalFood("Pedigree", 55, new DateTime(2024, 05, 14, 12, 0, 0), true);
             RehabilitationActivity activity = new RehabilitationActivity("walking");
@@ -26,6 +19,7 @@ namespace AnimalRescue
             Game game = new Game(adopter, dog, vet);
 
             Console.WriteLine(dog.ToString());
+            Console.WriteLine(cat.ToString());
             Console.WriteLine(adopter.ToString());
             Console.WriteLine(food.ToString());
             Console.WriteLine(activity.ToString());
