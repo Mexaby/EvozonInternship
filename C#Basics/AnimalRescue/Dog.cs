@@ -42,8 +42,17 @@ namespace AnimalRescue
                 this.Happiness += 2;
             }
 
+            if(animalFood.Name.Equals("Special diet"))
+            {
+                this.Weight -= 0.6;
+            } else
+            {
+                this.Weight += 0.2;
+            }
+
             this.Health++;
-            this.Weight += 0.2;
+            
+
 
             if (this.Health > 10) this.Health = 10;
             if (this.Hunger < 0) this.Hunger = 0;
@@ -62,12 +71,14 @@ namespace AnimalRescue
             {
                 Health += 5;
                 Happiness += 4;
+                Weight -= 0.5;
 
             }
             else
             {
                 Health += 3;
                 Happiness += 2;
+                Weight -= 0.2;
             }
 
             if (Health > 10) Health = 10;
