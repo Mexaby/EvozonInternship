@@ -10,13 +10,23 @@ namespace AnimalRescue
     internal class Dog : Animal
     {
         private readonly string breed;
+        private bool isVaccinated;
+        private bool isDewormed;
+        private bool isScared;
 
-        public Dog(string name, int age, int health, int hunger, int happiness, string preferredFood, string preferredRehabilitaton, double weight, string breed) : base(name, age, health, hunger, happiness, preferredFood, preferredRehabilitaton, weight)
+        public Dog(string name, int age, int health, int hunger, int happiness, string preferredFood, string preferredRehabilitaton, double weight, string breed, bool isVaccinated, bool isDisinfected, bool isScared) : base(name, age, health, hunger, happiness, preferredFood, preferredRehabilitaton, weight)
         {
             this.breed = breed;
+            this.isVaccinated = isVaccinated;
+            this.isDewormed = isDisinfected;
+            this.isScared = isScared;
         }
 
         public string Breed => breed;
+
+        public bool IsVaccinated { get => isVaccinated; set => isVaccinated = value; }
+        public bool IsDewormed { get => isDewormed; set => isDewormed = value; }
+        public bool IsScared { get => isScared; set => isScared = value; }
 
         public override void Eat(AnimalFood animalFood)
         {

@@ -20,5 +20,18 @@ namespace AnimalRescue
 
         public string Name { get => name; set => name = value; }
         public string Specialization { get => specialization; set => specialization = value; }
+
+
+        public void vaccinateDog(Dog dog)
+        {
+            dog.IsVaccinated = true;
+            dog.IsScared = true;
+        }
+
+        public void dewormDog(Dog dog)
+        {
+            dog.IsDewormed = true;
+            dog.IsScared = true;
+        }
     }
 }
