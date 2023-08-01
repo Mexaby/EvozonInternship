@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace DistributionWarehouse
 {
-    internal class Warehouse
+    public class Warehouse
     {
         private List<StoragePackage> storagePackages;
 
@@ -53,29 +55,46 @@ namespace DistributionWarehouse
 
         public void SaveToDisk(string filename)
         {
-            // Code to save the warehouse data to disk
-            // You can use serialization or any other method to save the data to a file
-            // For simplicity, we'll skip the actual implementation here.
-            Console.WriteLine($"Warehouse data saved to {filename}");
+            try
+            {
+                string jsonData = JsonSerializer.Serialize(storagePackages);
+
+                File.WriteAllText(filename, jsonData);
+
+                Console.WriteLine($"Warehouse data saved to {filename}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving warehouse data: {ex.Message}");
+            }
         }
 
         public void ReadFromDisk(string filename)
         {
-            // Code to read the warehouse data from disk
-            // You can use deserialization or any other method to read the data from the file
-            // For simplicity, we'll skip the actual implementation here.
-            Console.WriteLine($"Warehouse data loaded from {filename}");
+            try
+            {
+                string jsonData = File.ReadAllText(filename);
+
+                storagePackages = JsonSerializer.Deserialize<List<StoragePackage>>(jsonData);
+
+                Console.WriteLine($"Warehouse data loaded from {filename}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading warehouse data: {ex.Message}");
+            }
         }
 
         public void PrintSummary(DateTime currentDate)
         {
             Console.WriteLine("Warehouse Summary:\n");
-
+            int i = 1;
             foreach (var package in storagePackages)
             {
                 double price = package.CalculatePrice(currentDate);
-                Console.WriteLine($"{package.Product.Name} - Quantity: {package.Quantity} {package.Product.MeasurableUnit}, " +
+                Console.WriteLine($"{i}: {package.Product.Name} - Quantity: {package.Quantity} {package.Product.MeasurableUnit}, " +
                                   $"Price: {price:C}, Entry Date: {package.EntryDate:d}, Expiration Date: {package.ExpirationDate:d}");
+                i++;
             }
         }
     }
