@@ -180,10 +180,10 @@ namespace SeleniumWebDriver
             action.MoveToElement(accessoriesHover).Perform();
             driver.FindElement(By.CssSelector("#nav > li:nth-child(4) > ul > li:nth-child(1) > a > span")).Click();
             driver.FindElement(By.CssSelector("#customerGrid_table > tbody > tr:nth-child(1)")).Click();
-            //TODO
-            driver.FindElement(By.Id("id_ab1caece45ad782e8dd979b2df0995ee")).Click();
+            driver.FindElements(By.CssSelector(".main-col-inner .content-header p button:nth-child(4) span span span"))[0].Click();
             driver.SwitchTo().Alert().Accept();
 
+            driver.Close();
         }
 
         [TestMethod]
