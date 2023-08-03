@@ -8,7 +8,7 @@ namespace SeleniumWebDriver
     public class Tests
     {
         [TestMethod]
-        public void ValidLogin()
+        public void UserIntroducedCorrectLoginCredentials()
         {
             //initialize driver
             WebDriver driver = new ChromeDriver();
@@ -42,7 +42,7 @@ namespace SeleniumWebDriver
         }
 
         [TestMethod]
-        public void InvalidLogin()
+        public void UserIntroducedWrongLoginCredentials()
         {
             //initialize driver
             WebDriver driver = new ChromeDriver();
@@ -73,7 +73,7 @@ namespace SeleniumWebDriver
         }
 
         [TestMethod]
-        public void MainCategories()
+        public void NavigateMainCategories()
         {
             //initialize driver
             WebDriver driver = new ChromeDriver();
@@ -83,34 +83,34 @@ namespace SeleniumWebDriver
             driver.Navigate().GoToUrl("http://qa2magento.dev.evozon.com/");
 
             //access women's main category and return to home page
-            driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-1.first.parent > a"));
-            driver.FindElement(By.CssSelector("#header > div > a > img.large"));
+            driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-1.first.parent > a")).Click();
+            driver.FindElement(By.CssSelector("#header > div > a > img.large")).Click();
 
             //access men's main category and return to home page
-            driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-2.parent > a"));
-            driver.FindElement(By.CssSelector("#header > div > a > img.large"));
+            driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-2.parent > a")).Click();
+            driver.FindElement(By.CssSelector("#header > div > a > img.large")).Click();
 
             //access accessories main category and return to home page
-            driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-3.parent > a"));
-            driver.FindElement(By.CssSelector("#header > div > a > img.large"));
+            driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-3.parent > a")).Click();
+            driver.FindElement(By.CssSelector("#header > div > a > img.large")).Click();
 
             //access home & decor main category and return to home page
-            driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-4.parent > a"));
-            driver.FindElement(By.CssSelector("#header > div > a > img.large"));
+            driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-4.parent > a")).Click();
+            driver.FindElement(By.CssSelector("#header > div > a > img.large")).Click();
 
             //access sale main category and return to home page
-            driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-5.parent > a"));
-            driver.FindElement(By.CssSelector("#header > div > a > img.large"));
+            driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-5.parent > a")).Click();
+            driver.FindElement(By.CssSelector("#header > div > a > img.large")).Click();
 
             //access vip main category and return to home page
-            driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-6.last > a"));
-            driver.FindElement(By.CssSelector("#header > div > a > img.large"));
+            driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-6.last > a")).Click();
+            driver.FindElement(By.CssSelector("#header > div > a > img.large")).Click();
 
             driver.Close();
         }
 
         [TestMethod]
-        public void Search()
+        public void SearchForKeyword()
         {
             //initialize driver
             WebDriver driver = new ChromeDriver();
@@ -136,7 +136,7 @@ namespace SeleniumWebDriver
         }
 
         [TestMethod]
-        public void ValidRegister()
+        public void UserIntroducedValidRegisterCredentials()
         {
             //initialize driver
             WebDriver driver = new ChromeDriver();
@@ -175,9 +175,9 @@ namespace SeleniumWebDriver
             driver.FindElement(By.Id("login")).SendKeys("password123");
             driver.FindElement(By.CssSelector("#loginForm > div > div.form-buttons > input")).Click();
             driver.FindElement(By.CssSelector("#message-popup-window > div.message-popup-head > a > span")).Click();
-            Actions action = new Actions(driver);
-            IWebElement accessoriesHover = driver.FindElement(By.CssSelector("#nav > li:nth-child(4) > a > span"));
-            action.MoveToElement(accessoriesHover).Perform();
+            var action = new Actions(driver);
+            var accessoriesElement = driver.FindElement(By.CssSelector("#nav > li:nth-child(4) > a > span"));
+            action.MoveToElement(accessoriesElement).Perform();
             driver.FindElement(By.CssSelector("#nav > li:nth-child(4) > ul > li:nth-child(1) > a > span")).Click();
             driver.FindElement(By.CssSelector("#customerGrid_table > tbody > tr:nth-child(1)")).Click();
             driver.FindElements(By.CssSelector(".main-col-inner .content-header p button:nth-child(4) span span span"))[0].Click();
@@ -187,7 +187,7 @@ namespace SeleniumWebDriver
         }
 
         [TestMethod]
-        public void AddToWishlist()
+        public void AddAnyItemToWishlist()
         {
             //must be logged in in order to use the wishlist feature
             //initialize driver
@@ -207,9 +207,9 @@ namespace SeleniumWebDriver
             driver.FindElement(By.Id("send2")).Click();
 
             //access a sub-category
-            Actions action = new Actions(driver);
-            IWebElement accessoriesHover = driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-3.parent > a"));
-            action.MoveToElement(accessoriesHover).Perform();
+            var action = new Actions(driver);
+            var accessoriesElement = driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-3.parent > a"));
+            action.MoveToElement(accessoriesElement).Perform();
             driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-3.parent > ul > li.level1.nav-3-3 > a")).Click();
 
             //add some item to wishlist
@@ -231,7 +231,7 @@ namespace SeleniumWebDriver
         }
 
         [TestMethod]
-        public void RemoveFromWishlist()
+        public void RemoveLastItemFromWishlist()
         {
             //first we must add an element to the wishlist to delete it, so we copy all from the previous method, with a different item this time 
             //initialize driver
@@ -251,9 +251,9 @@ namespace SeleniumWebDriver
             driver.FindElement(By.Id("send2")).Click();
 
             //access a sub-category
-            Actions action = new Actions(driver);
-            IWebElement accessoriesHover = driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-2.parent > a"));
-            action.MoveToElement(accessoriesHover).Perform();
+            var action = new Actions(driver);
+            var accessoriesElement = driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-2.parent > a"));
+            action.MoveToElement(accessoriesElement).Perform();
             driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-2.parent > ul > li.level1.nav-2-2 > a")).Click();
 
             //add some item to wishlist
@@ -278,7 +278,7 @@ namespace SeleniumWebDriver
         }
 
         [TestMethod]
-        public void WishlistWithoutLogin()
+        public void WishlistItemWithoutLogin()
         {
             //try to wishlist an item right away
             //initialize driver
@@ -289,9 +289,9 @@ namespace SeleniumWebDriver
             driver.Navigate().GoToUrl("http://qa2magento.dev.evozon.com/");
 
             //access a sub-category
-            Actions action = new Actions(driver);
-            IWebElement accessoriesHover = driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-1.first.parent > a"));
-            action.MoveToElement(accessoriesHover).Perform();
+            var action = new Actions(driver);
+            var accessoriesElement = driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-1.first.parent > a"));
+            action.MoveToElement(accessoriesElement).Perform();
             driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-1.first.parent > ul > li.level1.nav-1-4.last > a")).Click();
 
             //try to add item to wishlist, will take you to login page
@@ -310,7 +310,7 @@ namespace SeleniumWebDriver
         }
 
         [TestMethod]
-        public void AddToCart()
+        public void AddConfigurableItemToCart()
         {
             //initialize driver
             WebDriver driver = new ChromeDriver();
@@ -320,9 +320,9 @@ namespace SeleniumWebDriver
             driver.Navigate().GoToUrl("http://qa2magento.dev.evozon.com/");
 
             //access a sub-category
-            Actions action = new Actions(driver);
-            IWebElement accessoriesHover = driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-1.first.parent > a"));
-            action.MoveToElement(accessoriesHover).Perform();
+            var action = new Actions(driver);
+            var accessoriesElement = driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-1.first.parent > a"));
+            action.MoveToElement(accessoriesElement).Perform();
             driver.FindElement(By.CssSelector("#nav > ol > li.level0.nav-1.first.parent > ul > li.level1.nav-1-4.last > a")).Click();
 
             //view item, select configurable options and add it to the cart
