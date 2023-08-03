@@ -1,5 +1,7 @@
 using NUnit.Framework;
 using System;
+using System.Runtime.Intrinsics.X86;
+using System.Text;
 using FluentAssertions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -132,7 +134,9 @@ namespace NUnitTests
 
             //fill in the fields and click login
             driver.FindElement(By.Id("email")).SendKeys("asdf@asdf.com");
-            driver.FindElement(By.Id("pass")).SendKeys("1111111");
+
+            string password = Helper.GenerateRandomString(6, 128);
+            driver.FindElement(By.Id("pass")).SendKeys(password);
             driver.FindElement(By.Id("send2")).Click();
 
             driver.FindElement(By.CssSelector(".error-msg span")).Text.Should().Be("Invalid login or password.");
@@ -158,12 +162,18 @@ namespace NUnitTests
             driver.FindElement(By.CssSelector(".account-cart-wrapper .skip-link.skip-account")).Click();
             driver.FindElement(By.CssSelector("[title=\"Register\"]")).Click();
 
+            string firstName = Helper.GenerateRandomString(1, 256);
+            string lastName = Helper.GenerateRandomString(1, 256);
+            string password = Helper.GenerateRandomString(1, 256);
+            string emailName = Helper.GenerateRandomEmailString(1, 64);
+            //string emailHost = Helper.GenerateRandomEmailString(1, 128);
+
             //fill in the required fields and click register
-            driver.FindElement(By.Id("firstname")).SendKeys("auto");
-            driver.FindElement(By.Id("lastname")).SendKeys("testing");
-            driver.FindElement(By.Id("email_address")).SendKeys("qwe@qwe.com");
-            driver.FindElement(By.Id("password")).SendKeys("asdasd");
-            driver.FindElement(By.Id("confirmation")).SendKeys("asdasd");
+            driver.FindElement(By.Id("firstname")).SendKeys(firstName);
+            driver.FindElement(By.Id("lastname")).SendKeys(lastName);
+            driver.FindElement(By.Id("email_address")).SendKeys($"{emailName}@email.com");
+            driver.FindElement(By.Id("password")).SendKeys(password);
+            driver.FindElement(By.Id("confirmation")).SendKeys(password);
             driver.FindElement(By.CssSelector(".buttons-set .button")).Click();
 
             //confirmation
@@ -313,6 +323,39 @@ namespace NUnitTests
             driver.FindElement(By.CssSelector(".page-title h1")).Text.Should().Be("LOGIN OR CREATE AN ACCOUNT");
 
             driver.Close();
+        }
+    }
+
+    public class Helper
+    {
+        private static readonly Random random = new Random();
+        public static string GenerateRandomString(int minLength, int maxLength)
+        {
+            string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]};:'\",<.>/?";
+
+            int length = random.Next(minLength, maxLength + 1);
+            char[] randomString = new char[length];
+            for (int i = 0; i < length; i++)
+            {
+                randomString[i] = characters[random.Next(characters.Length)];
+            }
+
+            return new string(randomString);
+        }
+
+        //exact same method without some forbidden symbols
+        public static string GenerateRandomEmailString(int minLength, int maxLength)
+        {
+            string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_";
+
+            int length = random.Next(minLength, maxLength + 1);
+            char[] randomString = new char[length];
+            for (int i = 0; i < length; i++)
+            {
+                randomString[i] = characters[random.Next(characters.Length)];
+            }
+
+            return new string(randomString);
         }
     }
 }
