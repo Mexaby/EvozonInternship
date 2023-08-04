@@ -7,39 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
+using MsTests.Helpers;
+using MsTests.Tests;
 
 namespace NUnitTests.Tests
 {
     [TestClass]
-    public class CartTest
+    public class CartTest : BaseTest
     {
         [TestMethod]
         public void AddConfigurableItemToCart()
         {
-            //initialize driver
-            WebDriver driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
+            //women > dresses and skirts
+            Pages.HomePage.navigateToWomenCategories();
+            Pages.WomenCategoryPage.navigateToDressesAndSkirtsSubcategory();
 
-            //go to main page
-            driver.Navigate().GoToUrl("http://qa2magento.dev.evozon.com/");
+            Pages.SubCategoryPage.selectItemFromList(1);
 
-            //access a sub-category
-            var action = new Actions(driver);
-            var accessoriesElement = driver.FindElement(By.CssSelector(".level0.nav-1 a"));
-            action.MoveToElement(accessoriesElement).Perform();
-            driver.FindElement(By.CssSelector(".level1.nav-1-4 a")).Click();
-
-            //view item, select configurable options and add it to the cart
-            driver.FindElements(By.CssSelector(".product-info .actions .button "))[1].Click();
-            driver.FindElement(By.CssSelector("#swatch18 .swatch-label")).Click();
-            driver.FindElement(By.CssSelector("#swatch80 .swatch-label")).Click();
-            driver.FindElement(By.CssSelector(".add-to-cart-buttons .button")).Click();
+            Pages.ConfigurableItemDetailsPage.selectItemColor(0);
+            Pages.ConfigurableItemDetailsPage.selectItemSize(2);
+            Pages.ConfigurableItemDetailsPage.addItemToCart();
 
             //confirmation
-            driver.FindElement(By.CssSelector(".success-msg span")).Text.Should()
+            Driver.WebDriver.FindElement(By.CssSelector(".success-msg span")).Text.Should()
                 .Be("Racer Back Maxi Dress was added to your shopping cart.");
-
-            driver.Close();
         }
     }
 }
