@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumWebDriver", "SeleniumWebDriver\SeleniumWebDriver.csproj", "{B29D55CC-7B5C-45F6-94CF-BC59A60799EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MsTests", "SeleniumWebDriver\MsTests.csproj", "{B29D55CC-7B5C-45F6-94CF-BC59A60799EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTests", "NUnitTests\NUnitTests.csproj", "{5534BBF4-EF1E-4094-A510-11A3A969EA8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTests", "NUnitTests\NUnitTests.csproj", "{5534BBF4-EF1E-4094-A510-11A3A969EA8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
