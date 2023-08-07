@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization.Metadata;
-using System.Threading.Tasks;
-using MsTests.Helpers;
+﻿using MsTests.Helpers;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 
 namespace MsTests.Pages
 {
@@ -15,18 +10,8 @@ namespace MsTests.Pages
 
         //home page logo button
         private readonly By _homePageLogoButton = By.CssSelector("#header .large");
-        //women's main category
-        private readonly By _womenCategory = By.CssSelector(".level0.nav-1 a");
-        //men's main category
-        private readonly By _menCategory = By.CssSelector(".level0.nav-2 a");
-        //accessories main category
-        private readonly By _accessoriesCategory = By.CssSelector(".level0.nav-3 a");
-        //home & decor main category
-        private readonly By _homeAndDecorCategory = By.CssSelector(".level0.nav-4 a");
-        //access sale main category
-        private readonly By _saleCategory = By.CssSelector(".level0.nav-5 a");
-        //vip main category
-        private readonly By _vipCategory = By.CssSelector(".level0.nav-6 a");
+        //subcategories list
+        private readonly By _subcategoryList = By.CssSelector(".level1 a");
 
         //account dropdown
         private readonly By _accountDropDown = By.CssSelector(".account-cart-wrapper .skip-link.skip-account");
@@ -42,36 +27,20 @@ namespace MsTests.Pages
 
         #endregion
 
-        public void NavigateToWomenCategories()
+        public void NavigateToCategory(int index)
         {
-            Driver.WebDriver.FindElement(_womenCategory).Click();
+            Driver.WebDriver.FindElement(By.CssSelector($".level0.nav-{index+1} a")).Click();
         }
 
-        public void NavigateToMenCategory()
+        public void NavigateToSubcategoryFromDropdown(int categoryIndex, int subcategoryIndex)
         {
-            Driver.WebDriver.FindElement(_menCategory).Click();
-        }
+            var categoryDropDownElement = Driver.WebDriver.FindElement(By.CssSelector($".level0.nav-{categoryIndex + 1} a"));
+            Actions action = new Actions(Driver.WebDriver);
+            action.MoveToElement(categoryDropDownElement).Perform();
 
-        public void NavigateToAccessoriesCategory()
-        {
-            Driver.WebDriver.FindElement(_accessoriesCategory).Click();
+            Driver.WebDriver.FindElements(_subcategoryList)[subcategoryIndex].Click();
         }
-
-        public void NavigateToHomeAndDecorCategory()
-        {
-            Driver.WebDriver.FindElement(_homeAndDecorCategory).Click();
-        }
-
-        public void NavigateToSaleCategory()
-        {
-            Driver.WebDriver.FindElement(_saleCategory).Click();
-        }
-
-        public void NavigateToVipCategory()
-        {
-            Driver.WebDriver.FindElement(_vipCategory).Click();
-        }
-
+        
         public void NavigateToHomePage()
         {
             Driver.WebDriver.FindElement(_homePageLogoButton).Click();

@@ -1,14 +1,5 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using MsTests.Helpers;
-using MsTests.Tests;
 
 namespace MsTests.Tests
 {
@@ -19,13 +10,13 @@ namespace MsTests.Tests
         public void AddConfigurableItemToCart()
         {
             //women > dresses and skirts
-            Pages.HomePage.NavigateToWomenCategories();
-            Pages.WomenCategoryPage.NavigateToDressesAndSkirtsSubcategory();
+            Pages.HomePage.NavigateToCategory(0);
+            Pages.HomePage.NavigateToSubcategoryFromDropdown(0, 4);
 
-            Pages.SubCategoryPage.SelectItemFromList(1);
+            Pages.CategoryPage.NavigateToSubcategoryProductsPage(1);
 
-            Pages.ConfigurableItemDetailsPage.SelectItemColor(0);
-            Pages.ConfigurableItemDetailsPage.SelectItemSize(2);
+            Pages.ConfigurableItemDetailsPage.SelectItemColor(Color.Purple);
+            Pages.ConfigurableItemDetailsPage.SelectItemSize(ClothesSize.S);
             Pages.ConfigurableItemDetailsPage.AddItemToCart();
 
             //confirmation

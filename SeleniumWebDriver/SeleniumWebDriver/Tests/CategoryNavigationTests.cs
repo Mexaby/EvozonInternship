@@ -1,12 +1,5 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentAssertions;
 using MsTests.Helpers;
-using MsTests.Tests;
 
 namespace MsTests.Tests
 {
@@ -14,14 +7,13 @@ namespace MsTests.Tests
     public class CategoryNavigationTests : BaseTest
     {
         [TestMethod]
-        public void NavigateMainCategories()
+        public void NavigateThroughMainCategories()
         {
-            Pages.HomePage.NavigateToWomenCategories();
-            Pages.HomePage.NavigateToMenCategory();
-            Pages.HomePage.NavigateToAccessoriesCategory();
-            Pages.HomePage.NavigateToHomeAndDecorCategory();
-            Pages.HomePage.NavigateToSaleCategory();
-            Pages.HomePage.NavigateToVipCategory();
+            for (int i = 0; i < 6; i++)
+            {
+                Pages.HomePage.NavigateToCategory(i);
+                Pages.CategoryPage.IsCategoryTitleDisplayed().Should().BeTrue();
+            }
             Pages.HomePage.NavigateToHomePage();
         }
     }

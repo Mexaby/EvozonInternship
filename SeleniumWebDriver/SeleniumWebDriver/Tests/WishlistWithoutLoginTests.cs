@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using MsTests.Helpers;
-using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium;
 
 namespace MsTests.Tests
@@ -16,9 +10,9 @@ namespace MsTests.Tests
         [TestMethod]
         public void AddItemToWishlistWithoutLogin()
         {
-            Pages.HomePage.NavigateToWomenCategories();
-            Pages.WomenCategoryPage.NavigateToDressesAndSkirtsSubcategory();
-            Pages.WomenCategoryPage.AddItemToWishlistFromCategoryPage(3);
+            Pages.HomePage.NavigateToCategory(0);
+            Pages.HomePage.NavigateToSubcategoryFromDropdown(0, 4);
+            Pages.SubcategoryProductsPage.AddItemToWishlistFromSubategoryPage(3);
 
             Driver.WebDriver.FindElement(By.CssSelector(".page-title h1")).Text.Should().Be("LOGIN OR CREATE AN ACCOUNT");
         }

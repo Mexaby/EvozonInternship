@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MsTests.Helpers;
+﻿using MsTests.Helpers;
 using OpenQA.Selenium;
 
 namespace MsTests.Pages
@@ -18,14 +13,14 @@ namespace MsTests.Pages
 
         #endregion
 
-        public void SelectItemColor(int index)
+        public void SelectItemColor(Color color)
         {
-            Driver.WebDriver.FindElements(_itemColorList)[index].Click();
+            Driver.WebDriver.FindElement(By.CssSelector($"#configurable_swatch_color [title=\"{color}\"] .swatch-label")).Click();
         }
 
-        public void SelectItemSize(int index)
+        public void SelectItemSize(ClothesSize size)
         {
-            Driver.WebDriver.FindElements(_itemSizeList)[index].Click();
+            Driver.WebDriver.FindElement(By.CssSelector($"#configurable_swatch_size [title=\"{size}\"] .swatch-label")).Click();
         }
 
         public void AddItemToCart()

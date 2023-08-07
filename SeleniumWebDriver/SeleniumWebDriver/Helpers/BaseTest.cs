@@ -1,10 +1,4 @@
 ﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MsTests.Helpers
 {
@@ -12,7 +6,7 @@ namespace MsTests.Helpers
     {
 
         [TestInitialize]
-        public void Before()
+        public virtual void Before()
         {
             Driver.WebDriver = new ChromeDriver();
 
@@ -23,7 +17,7 @@ namespace MsTests.Helpers
         }
 
         [TestCleanup]
-        public void After()
+        public virtual void After()
         {
             Driver.WebDriver.Close();
         }

@@ -1,14 +1,5 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using MsTests.Helpers;
-using MsTests.Tests;
 
 namespace MsTests.Tests
 {
@@ -16,16 +7,16 @@ namespace MsTests.Tests
     public class WishlistWithLoginTests : BaseTest
     {
         [TestInitialize]
-        public void Before()
+        public override void Before()
         {
-            new BaseTest().Before();
+            base.Before();
 
             Pages.HomePage.NavigateToLogin();
-            Pages.LoginPage.PerformLogin("asdf@asdf.com", "111111");
+            Pages.LoginPage.PerformLogin(Constants.validEmail, Constants.validPassword);
 
-            Pages.HomePage.NavigateToWomenCategories();
-            Pages.WomenCategoryPage.NavigateToDressesAndSkirtsSubcategory();
-            Pages.WomenCategoryPage.AddItemToWishlistFromCategoryPage(3);
+            Pages.HomePage.NavigateToCategory(0);
+            Pages.CategoryPage.NavigateToSubcategoryProductsPage(3);
+            Pages.SubcategoryProductsPage.AddItemToWishlistFromSubategoryPage(3);
         }
 
         [TestMethod]

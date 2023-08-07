@@ -1,15 +1,6 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Faker;
+﻿using Faker;
 using FluentAssertions;
 using MsTests.Helpers;
-using MsTests.Tests;
 
 namespace MsTests.Tests
 {
@@ -20,20 +11,22 @@ namespace MsTests.Tests
         public void UserIntroducedValidRegisterCredentials()
         {
             Pages.HomePage.NavigateToRegister();
+            NewAccount account = new NewAccount();
 
-            string firstName = Name.First();
-            string lastName = Name.Last();
-            string password = StringFaker.Randomize("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]};:'\",<.>/?");
-            string email = Internet.Email();
+            account.FirstName = Name.First();
+            account.MiddleName = Name.Middle();
+            account.LastName = Name.Last();
+            account.Password = StringFaker.Randomize("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]};:'\",<.>/?");
+            account.Email = Internet.Email();
 
-            Pages.RegisterPage.PerformRegisterWithRequiredFields(firstName, lastName, email, password);
+            Pages.RegisterPage.PerformRegister(account);
 
             //confirmation
             Pages.RegisterPage.IsSuccessMessageDisplayed().Should().BeTrue();
         }
 
         [TestCleanup]
-        public void After()
+        public override void After()
         {
             //delete the created user from admin
             Pages.AdminPage.PerformAdminLogin();
@@ -44,7 +37,7 @@ namespace MsTests.Tests
             //confirmation
             Pages.AdminPage.IsMessageDisplayed().Should().BeTrue();
 
-            new BaseTest().After();
+            base.After();
         }
     }
 }

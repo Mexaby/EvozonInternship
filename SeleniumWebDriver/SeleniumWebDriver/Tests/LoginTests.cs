@@ -1,14 +1,6 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Faker;
+﻿using Faker;
 using FluentAssertions;
 using MsTests.Helpers;
-using MsTests.Tests;
 
 namespace MsTests.Tests
 {
@@ -16,9 +8,9 @@ namespace MsTests.Tests
     public class LoginTests : BaseTest
     {
         [TestInitialize]
-        public void Before()
+        public override void Before()
         {
-            new BaseTest().Before();
+            base.Before();
 
             Pages.HomePage.NavigateToLogin();
         }
@@ -27,8 +19,8 @@ namespace MsTests.Tests
         [TestMethod]
         public void UserIntroducedValidLoginCredentials()
         {
-            Pages.LoginPage.PerformLogin("asdf@asdf.com", "111111");
-            Pages.LoginPage.IsWelcomeMessageDisplayed().Should().BeTrue();
+            Pages.LoginPage.PerformLogin(Constants.validEmail, Constants.validPassword);
+            Pages.AccountPage.IsWelcomeMessageDisplayed().Should().BeTrue();
         }
 
         [TestMethod]
@@ -38,7 +30,7 @@ namespace MsTests.Tests
                 StringFaker.Randomize(
                     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]};:'\",<.>/?");
             
-            Pages.LoginPage.PerformLogin("asdf@asdf.com", password);
+            Pages.LoginPage.PerformLogin(Constants.validEmail, password);
 
             Pages.LoginPage.IsErrorMessageDisplayed().Should().BeTrue();
         }
