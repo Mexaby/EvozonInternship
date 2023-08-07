@@ -1,4 +1,5 @@
 ﻿using MsTests.Helpers;
+using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
 
 namespace MsTests.Pages
@@ -21,18 +22,18 @@ namespace MsTests.Pages
 
         public void PerformRegister(NewAccount account)
         {
-            Driver.WebDriver.FindElement(_firstNameField).SendKeys(account.FirstName);
-            Driver.WebDriver.FindElement(_middleNameField).SendKeys(account.MiddleName);
-            Driver.WebDriver.FindElement(_lastNameField).SendKeys(account.LastName);
-            Driver.WebDriver.FindElement(_emailField).SendKeys(account.Email);
-            Driver.WebDriver.FindElement(_passwordField).SendKeys(account.Password);
-            Driver.WebDriver.FindElement(_confirmPasswordField).SendKeys(account.Password);
-            Driver.WebDriver.FindElement(_registerButton).Click();
+            _firstNameField.ActionSendKeys(account.FirstName);
+            _middleNameField.ActionSendKeys(account.MiddleName);
+            _lastNameField.ActionSendKeys(account.LastName);
+            _emailField.ActionSendKeys(account.Email);
+            _passwordField.ActionSendKeys(account.Password);
+            _confirmPasswordField.ActionSendKeys(account.Password);
+            _registerButton.ActionClick();
         }
 
         public bool IsSuccessMessageDisplayed()
         {
-            return Driver.WebDriver.FindElement(_successMessage).Displayed;
+            return _successMessage.IsElementPresent();
         }
 
     }

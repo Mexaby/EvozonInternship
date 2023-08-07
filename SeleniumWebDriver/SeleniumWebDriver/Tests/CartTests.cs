@@ -10,11 +10,10 @@ namespace MsTests.Tests
         public void AddConfigurableItemToCart()
         {
             //women > dresses and skirts
-            Pages.HomePage.NavigateToCategory(0);
-            Pages.HomePage.NavigateToSubcategoryFromDropdown(0, 4);
+            Pages.HomePage.NavigateToSubcategoryFromDropdown(Category.WOMEN, Subcategory.Women.DRESSES_AND_SKIRTS);
 
-            Pages.CategoryPage.NavigateToSubcategoryProductsPage(1);
-
+            //second item from the products list
+            Pages.SubcategoryProductsPage.ViewProductDetails(1);
             Pages.ConfigurableItemDetailsPage.SelectItemColor(Color.Purple);
             Pages.ConfigurableItemDetailsPage.SelectItemSize(ClothesSize.S);
             Pages.ConfigurableItemDetailsPage.AddItemToCart();

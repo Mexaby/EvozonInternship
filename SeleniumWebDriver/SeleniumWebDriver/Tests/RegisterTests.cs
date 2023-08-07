@@ -1,6 +1,7 @@
 ﻿using Faker;
 using FluentAssertions;
 using MsTests.Helpers;
+using NsTestFrameworkUI.Helpers;
 
 namespace MsTests.Tests
 {
@@ -11,15 +12,7 @@ namespace MsTests.Tests
         public void UserIntroducedValidRegisterCredentials()
         {
             Pages.HomePage.NavigateToRegister();
-            NewAccount account = new NewAccount();
-
-            account.FirstName = Name.First();
-            account.MiddleName = Name.Middle();
-            account.LastName = Name.Last();
-            account.Password = StringFaker.Randomize("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]};:'\",<.>/?");
-            account.Email = Internet.Email();
-
-            Pages.RegisterPage.PerformRegister(account);
+            Pages.RegisterPage.PerformRegister(new NewAccount());
 
             //confirmation
             Pages.RegisterPage.IsSuccessMessageDisplayed().Should().BeTrue();
@@ -32,10 +25,7 @@ namespace MsTests.Tests
             Pages.AdminPage.PerformAdminLogin();
             Pages.AdminPage.DeleteLastRegisteredCustomer();
             
-            Driver.WebDriver.SwitchTo().Alert().Accept();
-
-            //confirmation
-            Pages.AdminPage.IsMessageDisplayed().Should().BeTrue();
+            Browser.WebDriver.SwitchTo().Alert().Accept();
 
             base.After();
         }

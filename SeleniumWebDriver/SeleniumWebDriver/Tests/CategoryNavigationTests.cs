@@ -9,11 +9,24 @@ namespace MsTests.Tests
         [TestMethod]
         public void NavigateThroughMainCategories()
         {
-            for (int i = 0; i < 6; i++)
-            {
-                Pages.HomePage.NavigateToCategory(i);
-                Pages.CategoryPage.IsCategoryTitleDisplayed().Should().BeTrue();
-            }
+            Pages.HomePage.NavigateToCategory(Category.WOMEN);
+            Pages.CategoryPage.IsCategoryTitleDisplayed().Should().BeTrue();
+
+            Pages.HomePage.NavigateToCategory(Category.MEN);
+            Pages.CategoryPage.IsCategoryTitleDisplayed().Should().BeTrue();
+
+            Pages.HomePage.NavigateToCategory(Category.ACCESSORIES);
+            Pages.CategoryPage.IsCategoryTitleDisplayed().Should().BeTrue();
+
+            Pages.HomePage.NavigateToCategory(Category.HOME_AND_DECOR);
+            Pages.CategoryPage.IsCategoryTitleDisplayed().Should().BeTrue();
+
+            Pages.HomePage.NavigateToCategory(Category.SALE);
+            Pages.CategoryPage.IsCategoryTitleDisplayed().Should().BeTrue();
+
+            Pages.HomePage.NavigateToCategory(Category.VIP);
+            Pages.CategoryPage.IsCategoryTitleDisplayed().Should().BeTrue();
+
             Pages.HomePage.NavigateToHomePage();
         }
     }

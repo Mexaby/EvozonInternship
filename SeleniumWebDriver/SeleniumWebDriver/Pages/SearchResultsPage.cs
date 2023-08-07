@@ -1,4 +1,5 @@
 ﻿using MsTests.Helpers;
+using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
 
 namespace MsTests.Pages
@@ -13,7 +14,7 @@ namespace MsTests.Pages
 
         public bool IsKeywordResultsMessageDisplayed()
         {
-            return Driver.WebDriver.FindElement(_keywordResultsMessage).Displayed;
+            return _keywordResultsMessage.IsElementPresent();
         }
     }
 }

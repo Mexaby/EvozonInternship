@@ -1,4 +1,7 @@
-﻿using MsTests.Helpers;
+﻿
+using MsTests.Helpers;
+using NsTestFrameworkUI.Helpers;
+using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
@@ -12,56 +15,85 @@ namespace MsTests.Pages
         private readonly By _homePageLogoButton = By.CssSelector("#header .large");
         //subcategories list
         private readonly By _subcategoryList = By.CssSelector(".level1 a");
-
         //account dropdown
         private readonly By _accountDropDown = By.CssSelector(".account-cart-wrapper .skip-link.skip-account");
         //login button
         private readonly By _loginButton = By.CssSelector("#header-account .last a");
         //register button
         private readonly By _registerButton = By.CssSelector("#header-account .links :nth-child(5) a");
-
         //search field
-        private readonly By _searchField  = By.Id("search");
+        private readonly By _searchField = By.Id("search");
         //search button
         private readonly By _searchButton = By.CssSelector(".search-button");
+        //category drop down buttons
+        private readonly By _categoryButtonsList = By.CssSelector(".level0 > a, .level0.has-children > a");
 
         #endregion
 
-        public void NavigateToCategory(int index)
+        public void NavigateToCategory(Category categoryTitle)
         {
-            Driver.WebDriver.FindElement(By.CssSelector($".level0.nav-{index+1} a")).Click();
+            // get all category elements
+            var categories = _categoryButtonsList.GetElements();
+            // find the category with the matching title
+            var category = categories.FirstOrDefault(c => c.Text == categoryTitle.ToString().Replace("AND", "&").Replace("_", " "));
+            if (category == null)
+            {
+                throw new ArgumentException($"No category found with title: {categoryTitle}");
+            }
+            // click the category
+            category.Click();
         }
 
-        public void NavigateToSubcategoryFromDropdown(int categoryIndex, int subcategoryIndex)
-        {
-            var categoryDropDownElement = Driver.WebDriver.FindElement(By.CssSelector($".level0.nav-{categoryIndex + 1} a"));
-            Actions action = new Actions(Driver.WebDriver);
-            action.MoveToElement(categoryDropDownElement).Perform();
 
-            Driver.WebDriver.FindElements(_subcategoryList)[subcategoryIndex].Click();
+        public void NavigateToSubcategoryFromDropdown(Category categoryTitle, Enum subcategoryTitle)
+        {
+
+            // get all category elements
+            var categories = _categoryButtonsList.GetElements();
+            // find the category with the matching title
+            var category = categories.FirstOrDefault(c => c.Text == categoryTitle.ToString());
+            if (categoryTitle is Category.HOME_AND_DECOR)
+            {
+                category = categories.FirstOrDefault(c => c.Text == "HOME & DECOR");
+            }
+            if (category == null)
+            {
+                throw new ArgumentException($"No category found with title: {categoryTitle}");
+            }
+            // click the category
+            category.Hover();
+
+            var subcategories = _subcategoryList.GetElements();
+            var subcategory = subcategories.FirstOrDefault(s => s.Text == subcategoryTitle.ToString().Replace("AND", "&").Replace("_", " "));
+            if (subcategory == null)
+            {
+                throw new ArgumentException($"No subcategory found with title: {categoryTitle}");
+            }
+            subcategory.Click();
         }
-        
+
         public void NavigateToHomePage()
         {
-            Driver.WebDriver.FindElement(_homePageLogoButton).Click();
+            _homePageLogoButton.ActionClick();
         }
 
         public void NavigateToLogin()
         {
-            Driver.WebDriver.FindElement(_accountDropDown).Click();
-            Driver.WebDriver.FindElement(_loginButton).Click();
+            _accountDropDown.ActionClick();
+            _loginButton.ActionClick();
         }
 
         public void NavigateToRegister()
         {
-            Driver.WebDriver.FindElement(_accountDropDown).Click();
-            Driver.WebDriver.FindElement(_registerButton).Click();
+            _accountDropDown.ActionClick();
+            _registerButton.ActionClick();
         }
 
         public void PerformSearchForKeyword(string keyword)
         {
-            Driver.WebDriver.FindElement(_searchField).SendKeys(keyword);
-            Driver.WebDriver.FindElement(_searchButton).Click();
+            _searchField.ActionSendKeys(keyword);
+            _searchButton.ActionClick();
+            WaitHelpers.WaitForDocumentReadyState();
         }
     }
 

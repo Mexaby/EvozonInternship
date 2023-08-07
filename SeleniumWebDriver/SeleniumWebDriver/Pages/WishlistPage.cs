@@ -1,4 +1,5 @@
 ﻿using MsTests.Helpers;
+using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
 
 namespace MsTests.Pages
@@ -15,17 +16,17 @@ namespace MsTests.Pages
 
         public void RemoveLastItemFromWishlist()
         {
-            Driver.WebDriver.FindElement(_deleteButton).Click();
+            _deleteButton.ActionClick();
         }
 
         public bool IsSuccessMessageDisplayed()
         {
-            return Driver.WebDriver.FindElement(_successMessage).Displayed;
+            return _successMessage.IsElementPresent();
         }
 
         public bool IsEmptyWishlistMessageDisplayed()
         {
-            return Driver.WebDriver.FindElement(_emptyWishlistMessage).Displayed;
+            return _emptyWishlistMessage.IsElementPresent();
         }
     }
 }

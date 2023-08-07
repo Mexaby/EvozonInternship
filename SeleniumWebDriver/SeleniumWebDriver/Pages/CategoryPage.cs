@@ -1,4 +1,5 @@
 ﻿using MsTests.Helpers;
+using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
 
 namespace MsTests.Pages
@@ -14,12 +15,12 @@ namespace MsTests.Pages
 
         public void NavigateToSubcategoryProductsPage(int index)
         {
-            Driver.WebDriver.FindElements(_subcategoriesList)[index].Click();
+            _subcategoriesList.GetElements()[index].Click();
         }
 
         public bool IsCategoryTitleDisplayed()
         {
-            return Driver.WebDriver.FindElement(_categoryTitle).Displayed;
+            return _categoryTitle.IsElementPresent();
         }
     }
 }

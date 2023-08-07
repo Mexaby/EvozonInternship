@@ -5,16 +5,15 @@ using OpenQA.Selenium;
 namespace MsTests.Tests
 {
     [TestClass]
-    internal class WishlistWithoutLoginTests : BaseTest
+    public class WishlistWithoutLoginTests : BaseTest
     {
         [TestMethod]
         public void AddItemToWishlistWithoutLogin()
         {
-            Pages.HomePage.NavigateToCategory(0);
-            Pages.HomePage.NavigateToSubcategoryFromDropdown(0, 4);
+            Pages.HomePage.NavigateToSubcategoryFromDropdown(Category.WOMEN, Subcategory.Women.DRESSES_AND_SKIRTS);
             Pages.SubcategoryProductsPage.AddItemToWishlistFromSubategoryPage(3);
 
-            Driver.WebDriver.FindElement(By.CssSelector(".page-title h1")).Text.Should().Be("LOGIN OR CREATE AN ACCOUNT");
+            Pages.LoginPage.IsPageTitleDisplayed().Should().BeTrue();
         }
     }
 }

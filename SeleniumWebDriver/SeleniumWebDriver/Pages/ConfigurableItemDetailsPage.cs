@@ -1,4 +1,6 @@
 ﻿using MsTests.Helpers;
+using NsTestFrameworkUI.Helpers;
+using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
 
 namespace MsTests.Pages
@@ -15,17 +17,18 @@ namespace MsTests.Pages
 
         public void SelectItemColor(Color color)
         {
-            Driver.WebDriver.FindElement(By.CssSelector($"#configurable_swatch_color [title=\"{color}\"] .swatch-label")).Click();
+            //string itemColor = _itemColorList.GetAttribute("alt");
+            Browser.WebDriver.FindElement(By.CssSelector($"#configurable_swatch_color [title=\"{color}\"] .swatch-label")).Click();
         }
 
         public void SelectItemSize(ClothesSize size)
         {
-            Driver.WebDriver.FindElement(By.CssSelector($"#configurable_swatch_size [title=\"{size}\"] .swatch-label")).Click();
+            Browser.WebDriver.FindElement(By.CssSelector($"#configurable_swatch_size [title=\"{size}\"] .swatch-label")).Click();
         }
 
         public void AddItemToCart()
         {
-            Driver.WebDriver.FindElement(_addToCart).Click();
+            _addToCart.ActionClick();
         }
     }
 }

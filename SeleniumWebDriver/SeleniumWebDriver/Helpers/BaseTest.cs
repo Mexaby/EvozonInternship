@@ -1,25 +1,27 @@
-﻿using OpenQA.Selenium.Chrome;
+﻿using System.Reflection;
+using NsTestFrameworkUI.Helpers;
+using OpenQA.Selenium.Chrome;
 
 namespace MsTests.Helpers
 {
     public class BaseTest
     {
-
         [TestInitialize]
         public virtual void Before()
         {
-            Driver.WebDriver = new ChromeDriver();
-
-            Driver.WebDriver.Manage().Window.Maximize();
-
-            //go to main page
-            Driver.WebDriver.Navigate().GoToUrl("http://qa2magento.dev.evozon.com/");
+            Browser.InitializeDriver(new DriverOptions
+            {
+                IsHeadless = false,
+                ChromeDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+            });
+            Browser.GoTo("http://qa2magento.dev.evozon.com/");
+            Browser.WebDriver.Manage().Window.Maximize();
         }
 
         [TestCleanup]
         public virtual void After()
         {
-            Driver.WebDriver.Close();
+            Browser.Cleanup();
         }
     }
 }

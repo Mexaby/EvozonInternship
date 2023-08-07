@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using MsTests.Helpers;
+using NsTestFrameworkUI.Helpers;
 
 namespace MsTests.Tests
 {
@@ -12,9 +13,9 @@ namespace MsTests.Tests
             base.Before();
 
             Pages.HomePage.NavigateToLogin();
-            Pages.LoginPage.PerformLogin(Constants.validEmail, Constants.validPassword);
+            Pages.LoginPage.PerformLogin(Constants.VALID_EMAIL, Constants.VALID_PASSWORD);
 
-            Pages.HomePage.NavigateToCategory(0);
+            Pages.HomePage.NavigateToCategory(Category.WOMEN);
             Pages.CategoryPage.NavigateToSubcategoryProductsPage(3);
             Pages.SubcategoryProductsPage.AddItemToWishlistFromSubategoryPage(3);
         }
@@ -30,7 +31,7 @@ namespace MsTests.Tests
         public void RemoveOnlyItemFromWishlist()
         {
             Pages.WishlistPage.RemoveLastItemFromWishlist();
-            Driver.WebDriver.SwitchTo().Alert().Accept();
+            Browser.WebDriver.SwitchTo().Alert().Accept();
 
             //confirmation
             Pages.WishlistPage.IsEmptyWishlistMessageDisplayed().Should().BeTrue();

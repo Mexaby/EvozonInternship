@@ -1,4 +1,7 @@
-﻿using MsTests.Helpers;
+﻿using System.Net.WebSockets;
+using MsTests.Helpers;
+using NsTestFrameworkUI.Helpers;
+using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
@@ -24,28 +27,28 @@ namespace MsTests.Pages
 
         public void PerformAdminLogin()
         {
-            Driver.WebDriver.Navigate().GoToUrl("http://qa2magento.dev.evozon.com/admin");
-            Driver.WebDriver.FindElement(_username).SendKeys("testuser");
-            Driver.WebDriver.FindElement(_password).SendKeys("password123");
-            Driver.WebDriver.FindElement(_loginButton).Click();
+            Browser.GoTo("http://qa2magento.dev.evozon.com/admin");
+            _username.ActionSendKeys("testuser");
+            _password.ActionSendKeys("password123");
+            _loginButton.ActionClick();
         }
 
         public void DeleteLastRegisteredCustomer()
         {
-            Driver.WebDriver.FindElement(_messagePopup).Click();
+            _messagePopup.ActionClick();
 
-            var action = new Actions(Driver.WebDriver);
-            var accessoriesElement = Driver.WebDriver.FindElements(_customersCategory)[3];
+            var action = new Actions(Browser.WebDriver);
+            var accessoriesElement = _customersCategory.GetElements()[3];
             action.MoveToElement(accessoriesElement).Perform();
 
-            Driver.WebDriver.FindElements(_manageCustomersSubCategory)[0].Click();
-            Driver.WebDriver.FindElement(_firstCustomerFromGrid).Click();
-            Driver.WebDriver.FindElements(_deleteButton)[0].Click();
+            _manageCustomersSubCategory.GetElements()[0].Click();
+            _firstCustomerFromGrid.ActionClick();
+            _deleteButton.GetElements()[0].Click();
         }
 
         public bool IsMessageDisplayed()
         {
-            return Driver.WebDriver.FindElement(_successMessage).Displayed;
+            return _successMessage.IsElementPresent();
         }
     }
 }

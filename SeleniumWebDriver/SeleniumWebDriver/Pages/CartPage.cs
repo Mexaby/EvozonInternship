@@ -1,4 +1,5 @@
 ﻿using MsTests.Helpers;
+using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
 
 namespace MsTests.Pages
@@ -13,7 +14,7 @@ namespace MsTests.Pages
 
         public bool IsSuccessMessageDisplayed()
         {
-            return Driver.WebDriver.FindElement(_successMessage).Displayed;
+            return _successMessage.IsElementPresent();
         }
     }
 }

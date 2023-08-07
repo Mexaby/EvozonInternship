@@ -19,19 +19,14 @@ namespace MsTests.Tests
         [TestMethod]
         public void UserIntroducedValidLoginCredentials()
         {
-            Pages.LoginPage.PerformLogin(Constants.validEmail, Constants.validPassword);
+            Pages.LoginPage.PerformLogin(Constants.VALID_EMAIL, Constants.VALID_PASSWORD);
             Pages.AccountPage.IsWelcomeMessageDisplayed().Should().BeTrue();
         }
 
         [TestMethod]
         public void UserIntroducedTooLongPassword()
         {
-            string password =
-                StringFaker.Randomize(
-                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]};:'\",<.>/?");
-            
-            Pages.LoginPage.PerformLogin(Constants.validEmail, password);
-
+            Pages.LoginPage.PerformLogin(Constants.VALID_EMAIL, Constants.RANDOM_PASSWORD);
             Pages.LoginPage.IsErrorMessageDisplayed().Should().BeTrue();
         }
     }
