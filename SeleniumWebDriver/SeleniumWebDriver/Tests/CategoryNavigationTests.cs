@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using MsTests.Helpers;
 using MsTests.Tests;
 
-namespace NUnitTests.Tests
+namespace MsTests.Tests
 {
     [TestClass]
     public class CategoryNavigationTests : BaseTest
@@ -16,13 +16,13 @@ namespace NUnitTests.Tests
         [TestMethod]
         public void NavigateMainCategories()
         {
-            Pages.HomePage.navigateToWomenCategories();
-            Pages.HomePage.navigateToMenCategory();
-            Pages.HomePage.navigateToAccessoriesCategory();
-            Pages.HomePage.navigateToHomeAndDecorCategory();
-            Pages.HomePage.navigateToSaleCategory();
-            Pages.HomePage.navigateToVipCategory();
-            Pages.HomePage.navigateToHomePage();
+            Pages.HomePage.NavigateToWomenCategories();
+            Pages.HomePage.NavigateToMenCategory();
+            Pages.HomePage.NavigateToAccessoriesCategory();
+            Pages.HomePage.NavigateToHomeAndDecorCategory();
+            Pages.HomePage.NavigateToSaleCategory();
+            Pages.HomePage.NavigateToVipCategory();
+            Pages.HomePage.NavigateToHomePage();
         }
     }
 }

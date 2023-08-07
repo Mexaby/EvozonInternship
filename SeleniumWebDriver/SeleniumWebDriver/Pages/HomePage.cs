@@ -42,54 +42,54 @@ namespace MsTests.Pages
 
         #endregion
 
-        public void navigateToWomenCategories()
+        public void NavigateToWomenCategories()
         {
             Driver.WebDriver.FindElement(_womenCategory).Click();
         }
 
-        public void navigateToMenCategory()
+        public void NavigateToMenCategory()
         {
             Driver.WebDriver.FindElement(_menCategory).Click();
         }
 
-        public void navigateToAccessoriesCategory()
+        public void NavigateToAccessoriesCategory()
         {
             Driver.WebDriver.FindElement(_accessoriesCategory).Click();
         }
 
-        public void navigateToHomeAndDecorCategory()
+        public void NavigateToHomeAndDecorCategory()
         {
             Driver.WebDriver.FindElement(_homeAndDecorCategory).Click();
         }
 
-        public void navigateToSaleCategory()
+        public void NavigateToSaleCategory()
         {
             Driver.WebDriver.FindElement(_saleCategory).Click();
         }
 
-        public void navigateToVipCategory()
+        public void NavigateToVipCategory()
         {
             Driver.WebDriver.FindElement(_vipCategory).Click();
         }
 
-        public void navigateToHomePage()
+        public void NavigateToHomePage()
         {
             Driver.WebDriver.FindElement(_homePageLogoButton).Click();
         }
 
-        public void navigateToLogin()
+        public void NavigateToLogin()
         {
             Driver.WebDriver.FindElement(_accountDropDown).Click();
             Driver.WebDriver.FindElement(_loginButton).Click();
         }
 
-        public void navigateToRegister()
+        public void NavigateToRegister()
         {
             Driver.WebDriver.FindElement(_accountDropDown).Click();
             Driver.WebDriver.FindElement(_registerButton).Click();
         }
 
-        public void performSearchForKeyword(string keyword)
+        public void PerformSearchForKeyword(string keyword)
         {
             Driver.WebDriver.FindElement(_searchField).SendKeys(keyword);
             Driver.WebDriver.FindElement(_searchButton).Click();

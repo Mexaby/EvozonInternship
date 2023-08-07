@@ -16,7 +16,7 @@ namespace MsTests.Pages
 
         #endregion
 
-        public void selectItemFromList(int index)
+        public void SelectItemFromList(int index)
         {
             Driver.WebDriver.FindElements(_itemListSelector)[index].Click();
         }

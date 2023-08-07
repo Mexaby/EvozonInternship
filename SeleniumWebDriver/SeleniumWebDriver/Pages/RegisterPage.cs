@@ -24,7 +24,7 @@ namespace MsTests.Pages
 
         #endregion
 
-        public void performRegisterWithRequiredFields(string firstname, string lastname, string email, string password)
+        public void PerformRegisterWithRequiredFields(string firstname, string lastname, string email, string password)
         {
             Driver.WebDriver.FindElement(_firstNameField).SendKeys(firstname);
             Driver.WebDriver.FindElement(_lastNameField).SendKeys(lastname);
@@ -34,7 +34,7 @@ namespace MsTests.Pages
             Driver.WebDriver.FindElement(_registerButton).Click();
         }
 
-        public bool IsMessageDisplayed()
+        public bool IsSuccessMessageDisplayed()
         {
             return Driver.WebDriver.FindElement(_successMessage).Displayed;
         }

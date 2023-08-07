@@ -9,7 +9,7 @@ using FluentAssertions;
 using MsTests.Helpers;
 using MsTests.Tests;
 
-namespace NUnitTests.Tests
+namespace MsTests.Tests
 {
 
     [TestClass]
@@ -18,7 +18,7 @@ namespace NUnitTests.Tests
         [TestMethod]
         public void SearchForKeyword()
         {
-            Pages.HomePage.performSearchForKeyword("red");
+            Pages.HomePage.PerformSearchForKeyword("red");
             Pages.SearchResultsPage.IsMessageDisplayed().Should().BeTrue();
         }
     }

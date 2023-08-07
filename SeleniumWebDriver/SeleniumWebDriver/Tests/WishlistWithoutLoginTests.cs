@@ -16,9 +16,9 @@ namespace MsTests.Tests
         [TestMethod]
         public void AddItemToWishlistWithoutLogin()
         {
-            Pages.HomePage.navigateToWomenCategories();
-            Pages.WomenCategoryPage.navigateToDressesAndSkirtsSubcategory();
-            Pages.WomenCategoryPage.addItemToWishlist(3);
+            Pages.HomePage.NavigateToWomenCategories();
+            Pages.WomenCategoryPage.NavigateToDressesAndSkirtsSubcategory();
+            Pages.WomenCategoryPage.AddItemToWishlistFromCategoryPage(3);
 
             Driver.WebDriver.FindElement(By.CssSelector(".page-title h1")).Text.Should().Be("LOGIN OR CREATE AN ACCOUNT");
         }

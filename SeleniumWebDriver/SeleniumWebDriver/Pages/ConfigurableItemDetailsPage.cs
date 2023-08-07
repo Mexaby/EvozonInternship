@@ -18,17 +18,17 @@ namespace MsTests.Pages
 
         #endregion
 
-        public void selectItemColor(int index)
+        public void SelectItemColor(int index)
         {
             Driver.WebDriver.FindElements(_itemColorList)[index].Click();
         }
 
-        public void selectItemSize(int index)
+        public void SelectItemSize(int index)
         {
             Driver.WebDriver.FindElements(_itemSizeList)[index].Click();
         }
 
-        public void addItemToCart()
+        public void AddItemToCart()
         {
             Driver.WebDriver.FindElement(_addToCart).Click();
         }

@@ -17,12 +17,12 @@ namespace MsTests.Pages
 
         #endregion
 
-        public void navigateToDressesAndSkirtsSubcategory()
+        public void NavigateToDressesAndSkirtsSubcategory()
         {
             Driver.WebDriver.FindElement(_dressessAndSkirts).Click();
         }
 
-        public void addItemToWishlist(int index)
+        public void AddItemToWishlistFromCategoryPage(int index)
         {
             Driver.WebDriver.FindElements(_addItemToWishlist)[index].Click();
         }

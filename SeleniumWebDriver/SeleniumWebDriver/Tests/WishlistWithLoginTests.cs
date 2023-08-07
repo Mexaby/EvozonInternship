@@ -10,7 +10,7 @@ using FluentAssertions;
 using MsTests.Helpers;
 using MsTests.Tests;
 
-namespace NUnitTests.Tests
+namespace MsTests.Tests
 {
     [TestClass]
     public class WishlistWithLoginTests : BaseTest
@@ -20,12 +20,12 @@ namespace NUnitTests.Tests
         {
             new BaseTest().Before();
 
-            Pages.HomePage.navigateToLogin();
-            Pages.LoginPage.performLogin("asdf@asdf.com", "111111");
+            Pages.HomePage.NavigateToLogin();
+            Pages.LoginPage.PerformLogin("asdf@asdf.com", "111111");
 
-            Pages.HomePage.navigateToWomenCategories();
-            Pages.WomenCategoryPage.navigateToDressesAndSkirtsSubcategory();
-            Pages.WomenCategoryPage.addItemToWishlist(3);
+            Pages.HomePage.NavigateToWomenCategories();
+            Pages.WomenCategoryPage.NavigateToDressesAndSkirtsSubcategory();
+            Pages.WomenCategoryPage.AddItemToWishlistFromCategoryPage(3);
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@ namespace NUnitTests.Tests
         [TestMethod]
         public void RemoveOnlyItemFromWishlist()
         {
-            Pages.WishlistPage.removeLastItemFromWishlist();
+            Pages.WishlistPage.RemoveLastItemFromWishlist();
             Driver.WebDriver.SwitchTo().Alert().Accept();
 
             //confirmation

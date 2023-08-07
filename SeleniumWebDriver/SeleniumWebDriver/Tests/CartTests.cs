@@ -10,7 +10,7 @@ using FluentAssertions;
 using MsTests.Helpers;
 using MsTests.Tests;
 
-namespace NUnitTests.Tests
+namespace MsTests.Tests
 {
     [TestClass]
     public class CartTest : BaseTest
@@ -19,18 +19,17 @@ namespace NUnitTests.Tests
         public void AddConfigurableItemToCart()
         {
             //women > dresses and skirts
-            Pages.HomePage.navigateToWomenCategories();
-            Pages.WomenCategoryPage.navigateToDressesAndSkirtsSubcategory();
+            Pages.HomePage.NavigateToWomenCategories();
+            Pages.WomenCategoryPage.NavigateToDressesAndSkirtsSubcategory();
 
-            Pages.SubCategoryPage.selectItemFromList(1);
+            Pages.SubCategoryPage.SelectItemFromList(1);
 
-            Pages.ConfigurableItemDetailsPage.selectItemColor(0);
-            Pages.ConfigurableItemDetailsPage.selectItemSize(2);
-            Pages.ConfigurableItemDetailsPage.addItemToCart();
+            Pages.ConfigurableItemDetailsPage.SelectItemColor(0);
+            Pages.ConfigurableItemDetailsPage.SelectItemSize(2);
+            Pages.ConfigurableItemDetailsPage.AddItemToCart();
 
             //confirmation
-            Driver.WebDriver.FindElement(By.CssSelector(".success-msg span")).Text.Should()
-                .Be("Racer Back Maxi Dress was added to your shopping cart.");
+            Pages.CartPage.IsSuccessMessageDisplayed().Should().BeTrue();
         }
     }
 }

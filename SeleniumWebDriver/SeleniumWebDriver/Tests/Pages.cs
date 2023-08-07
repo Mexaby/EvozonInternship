@@ -19,6 +19,7 @@ namespace MsTests.Tests
         public static ConfigurableItemDetailsPage ConfigurableItemDetailsPage => InitPage(new ConfigurableItemDetailsPage());
         public static AdminPage AdminPage => InitPage(new AdminPage());
         public static WishlistPage WishlistPage => InitPage(new WishlistPage());
+        public static CartPage CartPage => InitPage(new CartPage());
 
         public static SearchResultsPage SearchResultsPage => InitPage(new SearchResultsPage());
 

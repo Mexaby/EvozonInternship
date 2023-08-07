@@ -19,7 +19,7 @@ namespace MsTests.Pages
 
         #endregion
 
-        public void removeLastItemFromWishlist()
+        public void RemoveLastItemFromWishlist()
         {
             Driver.WebDriver.FindElement(_deleteButton).Click();
         }

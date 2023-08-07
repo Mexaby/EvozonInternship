@@ -16,9 +16,9 @@ namespace MsTests.Pages
 
         #endregion
 
-        public void findSuccessMessage()
+        public bool IsSuccessMessageDisplayed()
         {
-            Driver.WebDriver.FindElement(_successMessage);
+            return Driver.WebDriver.FindElement(_successMessage).Displayed;
         }
     }
 }

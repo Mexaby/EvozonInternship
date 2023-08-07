@@ -11,7 +11,7 @@ using FluentAssertions;
 using MsTests.Helpers;
 using MsTests.Tests;
 
-namespace NUnitTests.Tests
+namespace MsTests.Tests
 {
     [TestClass]
     public class RegisterTests : BaseTest
@@ -19,17 +19,17 @@ namespace NUnitTests.Tests
         [TestMethod]
         public void UserIntroducedValidRegisterCredentials()
         {
-            Pages.HomePage.navigateToRegister();
+            Pages.HomePage.NavigateToRegister();
 
             string firstName = Name.First();
             string lastName = Name.Last();
             string password = StringFaker.Randomize("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]};:'\",<.>/?");
             string email = Internet.Email();
 
-            Pages.RegisterPage.performRegisterWithRequiredFields(firstName, lastName, email, password);
+            Pages.RegisterPage.PerformRegisterWithRequiredFields(firstName, lastName, email, password);
 
             //confirmation
-            Pages.RegisterPage.IsMessageDisplayed().Should().BeTrue();
+            Pages.RegisterPage.IsSuccessMessageDisplayed().Should().BeTrue();
         }
 
         [TestCleanup]

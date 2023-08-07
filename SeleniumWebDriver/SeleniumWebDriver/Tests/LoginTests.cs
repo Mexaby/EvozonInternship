@@ -10,7 +10,7 @@ using FluentAssertions;
 using MsTests.Helpers;
 using MsTests.Tests;
 
-namespace NUnitTests.Tests
+namespace MsTests.Tests
 {
     [TestClass]
     public class LoginTests : BaseTest
@@ -20,17 +20,15 @@ namespace NUnitTests.Tests
         {
             new BaseTest().Before();
 
-            Pages.HomePage.navigateToLogin();
+            Pages.HomePage.NavigateToLogin();
         }
 
 
         [TestMethod]
         public void UserIntroducedValidLoginCredentials()
         {
-
-            Pages.LoginPage.performLogin("asdf@asdf.com", "111111");
-            //confirmation
-            Driver.WebDriver.FindElement(By.CssSelector(".hello")).Text.Should().Be("Hello, Andrew 123 Tate!");
+            Pages.LoginPage.PerformLogin("asdf@asdf.com", "111111");
+            Pages.LoginPage.IsWelcomeMessageDisplayed().Should().BeTrue();
         }
 
         [TestMethod]
@@ -40,10 +38,9 @@ namespace NUnitTests.Tests
                 StringFaker.Randomize(
                     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]};:'\",<.>/?");
             
-            Pages.LoginPage.performLogin("asdf@asdf.com", password);
+            Pages.LoginPage.PerformLogin("asdf@asdf.com", password);
 
-            Driver.WebDriver.FindElement(By.CssSelector(".error-msg span")).Text.Should().Be("Invalid login or password.");
-
+            Pages.LoginPage.IsErrorMessageDisplayed().Should().BeTrue();
         }
     }
 }
