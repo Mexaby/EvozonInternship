@@ -1,4 +1,4 @@
-﻿namespace MsTests.Helpers
+﻿namespace MsTests.Helpers.Enums
 {
     public enum ClothesSize
     {

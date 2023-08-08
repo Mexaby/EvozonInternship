@@ -1,5 +1,6 @@
 ﻿
 using MsTests.Helpers;
+using MsTests.Helpers.Enums;
 using NsTestFrameworkUI.Helpers;
 using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
@@ -35,7 +36,8 @@ namespace MsTests.Pages
             // get all category elements
             var categories = _categoryButtonsList.GetElements();
             // find the category with the matching title
-            var category = categories.FirstOrDefault(c => c.Text == categoryTitle.ToString().Replace("AND", "&").Replace("_", " "));
+            string s = categoryTitle.GetDescription();
+            var category = categories.FirstOrDefault(c => c.Text == categoryTitle.GetDescription());
             if (category == null)
             {
                 throw new ArgumentException($"No category found with title: {categoryTitle}");
@@ -51,20 +53,16 @@ namespace MsTests.Pages
             // get all category elements
             var categories = _categoryButtonsList.GetElements();
             // find the category with the matching title
-            var category = categories.FirstOrDefault(c => c.Text == categoryTitle.ToString());
-            if (categoryTitle is Category.HOME_AND_DECOR)
-            {
-                category = categories.FirstOrDefault(c => c.Text == "HOME & DECOR");
-            }
+            var category = categories.FirstOrDefault(c => c.Text == categoryTitle.GetDescription());
             if (category == null)
             {
                 throw new ArgumentException($"No category found with title: {categoryTitle}");
             }
-            // click the category
+            // hover over the category
             category.Hover();
 
             var subcategories = _subcategoryList.GetElements();
-            var subcategory = subcategories.FirstOrDefault(s => s.Text == subcategoryTitle.ToString().Replace("AND", "&").Replace("_", " "));
+            var subcategory = subcategories.FirstOrDefault(s => s.Text == subcategoryTitle.GetDescription());
             if (subcategory == null)
             {
                 throw new ArgumentException($"No subcategory found with title: {categoryTitle}");

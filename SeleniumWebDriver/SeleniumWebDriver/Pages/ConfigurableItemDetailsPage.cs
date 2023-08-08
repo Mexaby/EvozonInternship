@@ -1,4 +1,4 @@
-﻿using MsTests.Helpers;
+﻿using MsTests.Helpers.Enums;
 using NsTestFrameworkUI.Helpers;
 using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;

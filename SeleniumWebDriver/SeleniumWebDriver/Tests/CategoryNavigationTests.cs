@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using MsTests.Helpers;
+using MsTests.Helpers.Enums;
 
 namespace MsTests.Tests
 {

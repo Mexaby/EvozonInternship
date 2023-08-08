@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using NsTestFrameworkUI.Helpers;
-using OpenQA.Selenium.Chrome;
 
+[assembly: Parallelize(Workers = 4, Scope = ExecutionScope.MethodLevel)]
 namespace MsTests.Helpers
 {
     public class BaseTest
