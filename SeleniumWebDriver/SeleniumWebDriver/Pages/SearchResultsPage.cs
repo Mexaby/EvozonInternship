@@ -1,5 +1,4 @@
-﻿using MsTests.Helpers;
-using NsTestFrameworkUI.Pages;
+﻿using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
 
 namespace MsTests.Pages

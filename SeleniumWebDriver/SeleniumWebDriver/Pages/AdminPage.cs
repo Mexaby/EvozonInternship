@@ -1,5 +1,4 @@
-﻿using System.Net.WebSockets;
-using MsTests.Helpers;
+﻿using MsTests.Helpers;
 using NsTestFrameworkUI.Helpers;
 using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
@@ -21,15 +20,13 @@ namespace MsTests.Pages
         private readonly By _firstCustomerFromGrid = By.CssSelector(".grid tbody tr:nth-child(1)");
         private readonly By _deleteButton = By.CssSelector(".main-col-inner .content-header p button:nth-child(4) span span span");
 
-        private readonly By _successMessage = By.CssSelector(".messages span");
-
         #endregion
 
-        public void PerformAdminLogin()
+        public void LoginAsAdmin()
         {
             Browser.GoTo("http://qa2magento.dev.evozon.com/admin");
-            _username.ActionSendKeys("testuser");
-            _password.ActionSendKeys("password123");
+            _username.ActionSendKeys(Constants.ADMIN_USERNAME);
+            _password.ActionSendKeys(Constants.ADMIN_PASSWORD);
             _loginButton.ActionClick();
         }
 
@@ -44,11 +41,6 @@ namespace MsTests.Pages
             _manageCustomersSubCategory.GetElements()[0].Click();
             _firstCustomerFromGrid.ActionClick();
             _deleteButton.GetElements()[0].Click();
-        }
-
-        public bool IsMessageDisplayed()
-        {
-            return _successMessage.IsElementPresent();
         }
     }
 }

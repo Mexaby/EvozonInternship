@@ -1,4 +1,4 @@
-﻿using MsTests.Helpers;
+﻿using NsTestFrameworkUI.Helpers;
 using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
 
@@ -8,25 +8,31 @@ namespace MsTests.Pages
     {
         #region Selectors
 
-        private readonly By _deleteButton = By.CssSelector(".btn-remove.btn-remove2");
-        private readonly By _successMessage = By.CssSelector(".success-msg span");
-        private readonly By _emptyWishlistMessage = By.CssSelector(".wishlist-empty");
+        private readonly By _wishlistProductNames = By.CssSelector("#wishlist-table tbody tr h3 a");
+        private readonly By _wishlistRemoveButtons = By.CssSelector("#wishlist-table tbody tr td[class*=\"remove\"] a");
+        private readonly By _confirmationMessage = By.CssSelector("li.success-msg span");
 
         #endregion
 
-        public void RemoveLastItemFromWishlist()
+        public string GetProductAddedToWishlistConfirmationMessage()
         {
-            _deleteButton.ActionClick();
+            return _confirmationMessage.GetText();
         }
 
-        public bool IsSuccessMessageDisplayed()
+        public bool IsProductInWishlist(string product)
         {
-            return _successMessage.IsElementPresent();
-        }
+            var wishlistElementsName = _wishlistProductNames.GetElements();
+            return wishlistElementsName.Any(i => i.Text.Equals(product.ToUpper()));
 
-        public bool IsEmptyWishlistMessageDisplayed()
+        }
+        
+        public void RemoveAllProductsFromWishlist()
         {
-            return _emptyWishlistMessage.IsElementPresent();
+            while (_wishlistRemoveButtons.GetElements().Count > 0)
+            {
+                _wishlistRemoveButtons.ActionClick();
+                Browser.WebDriver.SwitchTo().Alert().Accept();
+            }
         }
     }
 }

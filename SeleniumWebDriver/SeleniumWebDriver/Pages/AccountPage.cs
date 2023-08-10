@@ -1,5 +1,4 @@
-﻿using MsTests.Helpers;
-using NsTestFrameworkUI.Pages;
+﻿using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
 
 namespace MsTests.Pages
@@ -12,9 +11,9 @@ namespace MsTests.Pages
 
         #endregion
 
-        public bool IsWelcomeMessageDisplayed()
+        public string GetWelcomeMessage()
         {
-            return _welcomeMessage.IsElementPresent();
+            return _welcomeMessage.GetText();
         }
     }
 }

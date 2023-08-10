@@ -1,5 +1,4 @@
-﻿using MsTests.Helpers;
-using NsTestFrameworkUI.Pages;
+﻿using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
 
 namespace MsTests.Pages
@@ -8,13 +7,26 @@ namespace MsTests.Pages
     {
         #region Selectors
 
-        private readonly By _successMessage = By.CssSelector(".success-msg span");
+        private readonly By _confirmMessage = By.CssSelector("li.success-msg span");
+        private readonly By _productsList = By.CssSelector("h2[class] a");
+        private readonly By _emptyCartButton = By.Id("empty_cart_button");
 
         #endregion
 
-        public bool IsSuccessMessageDisplayed()
+        public string GetConfirmationMessage()
         {
-            return _successMessage.IsElementPresent();
+            return _confirmMessage.GetText();
+        }
+
+        public bool IsProductInCart(string product)
+        {
+            var cartElementsName = _productsList.GetElements();
+            return cartElementsName.Any(i => i.Text.Equals(product.ToUpper()));
+        }
+
+        public void EmptyCart()
+        {
+            _emptyCartButton.ActionClick();
         }
     }
 }

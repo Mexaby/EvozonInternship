@@ -1,7 +1,7 @@
-﻿using FluentAssertions;
+﻿using Automation.Helpers.Enums;
+using FluentAssertions;
 using MsTests.Helpers;
 using MsTests.Helpers.Enums;
-using NsTestFrameworkUI.Helpers;
 
 namespace MsTests.Tests
 {
@@ -13,31 +13,47 @@ namespace MsTests.Tests
         {
             base.Before();
 
-            Pages.HomePage.NavigateToLogin();
-            Pages.LoginPage.PerformLogin(Constants.VALID_EMAIL, Constants.VALID_PASSWORD);
-
-            Pages.HomePage.NavigateToCategory(Category.WOMEN);
-            Pages.CategoryPage.NavigateToSubcategoryProductsPage(3);
-            Pages.SubcategoryProductsPage.AddItemToWishlistFromSubategoryPage(3);
+            Pages.HeaderPage.NavigateToAccountDropdownOption(AccountOption.LOG_IN);
+            Pages.LoginPage.Login(Constants.VALID_EMAIL, Constants.VALID_PASSWORD);
         }
 
-        [TestMethod]
-        public void AddAnyItemToWishlistFromCategory()
+        public static IEnumerable<object[]> WishlistData()
         {
-            //confirmation
-            Pages.WishlistPage.IsSuccessMessageDisplayed().Should().BeTrue();
+            yield return new object[] { Category.VIP, null, "Broad St. Flapover Briefcase" };
+            yield return new object[] { Category.WOMEN, Subcategory.Women.NEW_ARRIVALS, "Elizabeth Knit Top" };
+            yield return new object[] { Category.MEN, Subcategory.Men.SHIRTS, "Plaid Cotton Shirt" };
+            yield return new object[] { Category.ACCESSORIES, Subcategory.Accessories.SHOES, "Suede Loafer, Navy" };
+            yield return new object[] { Category.HOME_AND_DECOR, Subcategory.HomeAndDecor.BOOKS_AND_MUSIC, "Alice in Wonderland" };
         }
 
+        [DynamicData(nameof(WishlistData), DynamicDataSourceType.Method)]
         [TestMethod]
-        public void RemoveOnlyItemFromWishlist()
+        public void AddProductToWishlistFromProductsPage(Category category, Enum subcategory, string productName)
         {
-            Pages.WishlistPage.RemoveLastItemFromWishlist();
-            Browser.WebDriver.SwitchTo().Alert().Accept();
+            Pages.HeaderPage.NavigateToSubcategoryFromDropdown(category, subcategory);
+            Pages.ProductsPage.AddProductToWishlist(productName);
 
-            //confirmation
-            Pages.WishlistPage.IsEmptyWishlistMessageDisplayed().Should().BeTrue();
+            Pages.WishlistPage.GetProductAddedToWishlistConfirmationMessage().Should().Contain(productName);
+            Pages.WishlistPage.IsProductInWishlist(productName).Should().BeTrue();
         }
 
-        
+        [DynamicData(nameof(WishlistData), DynamicDataSourceType.Method)]
+        [TestMethod]
+        public void AddProductToWishlistFromProductDetailsPage(Category category, Enum subcategory, string productName)
+        {
+            Pages.HeaderPage.NavigateToSubcategoryFromDropdown(category, subcategory);
+            Pages.ProductsPage.GoToProductDetailsPage(productName);
+            Pages.ProductDetailsPage.AddProductToWishlist();
+
+            Pages.WishlistPage.GetProductAddedToWishlistConfirmationMessage().Should().Contain(productName);
+            Pages.WishlistPage.IsProductInWishlist(productName).Should().BeTrue();
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            Pages.WishlistPage.RemoveAllProductsFromWishlist();
+            //Pages.WishlistPage.RemoveProductFromWishlist((string)TestContext.Properties["ProductName"]);
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace MsTests.Tests
         [TestMethod]
         public void SearchResultsAreDisplayed()
         {
-            Pages.HomePage.PerformSearchForKeyword("red");
+            Pages.HeaderPage.Search("red");
             Pages.SearchResultsPage.IsKeywordResultsMessageDisplayed().Should().BeTrue();
         }
     }

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MsTests.Helpers.Enums
+﻿namespace MsTests.Helpers.Enums
 {
     public class Subcategory
     {
@@ -37,6 +30,48 @@ namespace MsTests.Helpers.Enums
             PANTS_AND_DENIM,
             [System.ComponentModel.Description("Blazers")]
             BLAZERS
+        }
+
+        public enum HomeAndDecor
+        {
+            [System.ComponentModel.Description("View All Home & Decor")]
+            VIEW_ALL,
+            [System.ComponentModel.Description("Books & Music")]
+            BOOKS_AND_MUSIC,
+            [System.ComponentModel.Description("Bed & Bath")]
+            BED_AND_BATH,
+            [System.ComponentModel.Description("Electronics")]
+            ELECTRONICS,
+            [System.ComponentModel.Description("Decorative Accents")]
+            DECORATIVE_ACCENTS
+        }
+
+        public enum Accessories
+        {
+            [System.ComponentModel.Description("View All Accessories")]
+            VIEW_ALL,
+            [System.ComponentModel.Description("Eyewear")]
+            EYEWEAR,
+            [System.ComponentModel.Description("Jewelry")]
+            JEWELRY,
+            [System.ComponentModel.Description("Shoes")]
+            SHOES,
+            [System.ComponentModel.Description("Bags & Luggage")]
+            BAGS_AND_LUGGAGE,
+        }
+
+        public enum Sale
+        {
+            [System.ComponentModel.Description("View All Sale")]
+            VIEW_ALL,
+            [System.ComponentModel.Description("Women")]
+            WOMEN,
+            [System.ComponentModel.Description("Men")]
+            MEN,
+            [System.ComponentModel.Description("Accessories")]
+            ACCESSORIES,
+            [System.ComponentModel.Description("Home & Decor")]
+            HOME_AND_DECOR,
         }
     }
 }

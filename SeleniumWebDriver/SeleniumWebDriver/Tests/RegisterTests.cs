@@ -1,4 +1,4 @@
-﻿using Faker;
+﻿using Automation.Helpers.Enums;
 using FluentAssertions;
 using MsTests.Helpers;
 using NsTestFrameworkUI.Helpers;
@@ -8,21 +8,27 @@ namespace MsTests.Tests
     [TestClass]
     public class RegisterTests : BaseTest
     {
-        [TestMethod]
-        public void UserIntroducedValidRegisterCredentials()
-        {
-            Pages.HomePage.NavigateToRegister();
-            Pages.RegisterPage.PerformRegister(new NewAccount());
+        private readonly NewAccount _newAccount = new NewAccount();
 
-            //confirmation
+        [TestMethod]
+        public void UserIsAbleToRegister()
+        {
+            Pages.HeaderPage.NavigateToAccountDropdownOption(AccountOption.REGISTER);
+            Pages.RegisterPage.Register(_newAccount);
+
+            Pages.AccountPage.GetWelcomeMessage().Should().Contain(_newAccount.FirstName);
+            Pages.AccountPage.GetWelcomeMessage().Should().Contain(_newAccount.MiddleName);
+            Pages.AccountPage.GetWelcomeMessage().Should().Contain(_newAccount.LastName);
+
             Pages.RegisterPage.IsSuccessMessageDisplayed().Should().BeTrue();
+            Pages.HeaderPage.IsAccountOptionAvailable(AccountOption.LOG_IN).Should().BeFalse();
+            Pages.HeaderPage.IsAccountOptionAvailable(AccountOption.LOG_OUT).Should().BeTrue();
         }
 
         [TestCleanup]
         public override void After()
         {
-            //delete the created user from admin
-            Pages.AdminPage.PerformAdminLogin();
+            Pages.AdminPage.LoginAsAdmin();
             Pages.AdminPage.DeleteLastRegisteredCustomer();
             
             Browser.WebDriver.SwitchTo().Alert().Accept();
