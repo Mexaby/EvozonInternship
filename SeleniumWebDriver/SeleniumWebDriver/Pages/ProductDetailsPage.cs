@@ -17,9 +17,9 @@ namespace Automation.Pages
         
         #endregion
 
-        public void ChangeQuantity()
+        public void ChangeQuantity(int amount)
         {
-            _productQty.ActionSendKeys("2");
+            _productQty.ActionSendKeys(amount.ToString());
         }
 
         public void AddProductToCart()
