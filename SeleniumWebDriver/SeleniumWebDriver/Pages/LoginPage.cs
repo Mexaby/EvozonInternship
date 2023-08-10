@@ -8,18 +8,17 @@ namespace MsTests.Pages
     {
         #region Selectors
 
-        private readonly By _usernameField = By.Id("email");
+        private readonly By _emailField = By.Id("email");
         private readonly By _passwordField = By.Id("pass");
         private readonly By _loginButton = By.Id("send2");
-
-        private readonly By _errorMessage = By.CssSelector(".error-msg span");
-        private readonly By _pageTitle = By.CssSelector(".page-title h1");
+        private readonly By _errorMessage = By.CssSelector(".error-msg");
+        private readonly By _validationAdviceMessage = By.CssSelector(".validation-advice");
 
         #endregion
 
-        public void PerformLogin(string email, string password)
+        public void Login(string userEmail, string password)
         {
-            _usernameField.ActionSendKeys(email);
+            _emailField.ActionSendKeys(userEmail);
             _passwordField.ActionSendKeys(password);
             _loginButton.ActionClick();
         }
@@ -29,9 +28,9 @@ namespace MsTests.Pages
             return _errorMessage.IsElementPresent();
         }
 
-        public bool IsPageTitleDisplayed()
+        public bool IsValidationAdviceDisplayed()
         {
-            return _pageTitle.IsElementPresent();
+            return _validationAdviceMessage.IsElementPresent();
         }
 
     }

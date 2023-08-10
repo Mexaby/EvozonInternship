@@ -11,7 +11,7 @@ namespace MsTests.Tests
         [TestMethod]
         public void AddItemToWishlistWithoutLogin()
         {
-            Pages.HomePage.NavigateToSubcategoryFromDropdown(Category.WOMEN, Subcategory.Women.DRESSES_AND_SKIRTS);
+            Pages.HeaderPage.NavigateToSubcategoryFromDropdown(Category.WOMEN, Subcategory.Women.DRESSES_AND_SKIRTS);
             Pages.SubcategoryProductsPage.AddItemToWishlistFromSubategoryPage(3);
 
             Pages.LoginPage.IsPageTitleDisplayed().Should().BeTrue();

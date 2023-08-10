@@ -12,9 +12,9 @@ namespace MsTests.Pages
 
         #endregion
 
-        public bool IsWelcomeMessageDisplayed()
+        public string GetWelcomeMessage()
         {
-            return _welcomeMessage.IsElementPresent();
+            return _welcomeMessage.GetText();
         }
     }
 }

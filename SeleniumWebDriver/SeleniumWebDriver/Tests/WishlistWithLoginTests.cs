@@ -13,10 +13,10 @@ namespace MsTests.Tests
         {
             base.Before();
 
-            Pages.HomePage.NavigateToLogin();
+            Pages.HeaderPage.NavigateToLogin();
             Pages.LoginPage.PerformLogin(Constants.VALID_EMAIL, Constants.VALID_PASSWORD);
 
-            Pages.HomePage.NavigateToCategory(Category.WOMEN);
+            Pages.HeaderPage.NavigateToCategory(Category.WOMEN);
             Pages.CategoryPage.NavigateToSubcategoryProductsPage(3);
             Pages.SubcategoryProductsPage.AddItemToWishlistFromSubategoryPage(3);
         }

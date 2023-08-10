@@ -11,7 +11,7 @@ namespace MsTests.Tests
         public void AddConfigurableItemToCart()
         {
             //women > dresses and skirts
-            Pages.HomePage.NavigateToSubcategoryFromDropdown(Category.WOMEN, Subcategory.Women.DRESSES_AND_SKIRTS);
+            Pages.HeaderPage.NavigateToSubcategoryFromDropdown(Category.WOMEN, Subcategory.Women.DRESSES_AND_SKIRTS);
 
             //second item from the products list
             Pages.SubcategoryProductsPage.ViewProductDetails(1);

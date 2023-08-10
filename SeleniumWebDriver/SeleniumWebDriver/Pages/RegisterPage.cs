@@ -20,7 +20,7 @@ namespace MsTests.Pages
 
         #endregion
 
-        public void PerformRegister(NewAccount account)
+        public void Register(NewAccount account)
         {
             _firstNameField.ActionSendKeys(account.FirstName);
             _middleNameField.ActionSendKeys(account.MiddleName);
