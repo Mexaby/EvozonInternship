@@ -22,7 +22,7 @@ namespace MsTests.Tests
         {
             yield return new object[] { Category.VIP, null, "Broad St. Flapover Briefcase" };
             yield return new object[] { Category.WOMEN, Subcategory.Women.NEW_ARRIVALS, "Elizabeth Knit Top" };
-            yield return new object[] { Category.MEN, Subcategory.Men.SHIRTS, "White Shirt" };
+            yield return new object[] { Category.MEN, Subcategory.Men.SHIRTS, "Plaid Cotton Shirt" };
             yield return new object[] { Category.ACCESSORIES, Subcategory.Accessories.SHOES, "Suede Loafer, Navy" };
             yield return new object[] { Category.HOME_AND_DECOR, Subcategory.HomeAndDecor.BOOKS_AND_MUSIC, "Alice in Wonderland" };
         }
