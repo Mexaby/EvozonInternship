@@ -1,5 +1,4 @@
 ﻿using Automation.Helpers.Enums;
-using Faker;
 using FluentAssertions;
 using MsTests.Helpers;
 using NsTestFrameworkUI.Helpers;
@@ -29,7 +28,7 @@ namespace MsTests.Tests
         [TestCleanup]
         public override void After()
         {
-            Pages.AdminPage.PerformAdminLogin();
+            Pages.AdminPage.LoginAsAdmin();
             Pages.AdminPage.DeleteLastRegisteredCustomer();
             
             Browser.WebDriver.SwitchTo().Alert().Accept();

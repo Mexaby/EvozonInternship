@@ -1,5 +1,4 @@
-﻿using System.Net.WebSockets;
-using MsTests.Helpers;
+﻿using MsTests.Helpers;
 using NsTestFrameworkUI.Helpers;
 using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
@@ -23,7 +22,7 @@ namespace MsTests.Pages
 
         #endregion
 
-        public void PerformAdminLogin()
+        public void LoginAsAdmin()
         {
             Browser.GoTo("http://qa2magento.dev.evozon.com/admin");
             _username.ActionSendKeys(Constants.ADMIN_USERNAME);

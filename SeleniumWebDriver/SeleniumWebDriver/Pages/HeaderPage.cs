@@ -5,7 +5,6 @@ using MsTests.Helpers.Enums;
 using NsTestFrameworkUI.Helpers;
 using NsTestFrameworkUI.Pages;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 
 namespace MsTests.Pages
 {

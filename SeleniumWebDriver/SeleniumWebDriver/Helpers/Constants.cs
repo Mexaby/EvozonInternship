@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Faker;
+﻿using Faker;
 
 namespace MsTests.Helpers
 {
@@ -28,5 +23,6 @@ namespace MsTests.Helpers
         public static string CONFIGURABLE_PRODUCT = "Chelsea Tee";
         public static string DIGITAL_PRODUCT = "A Tale of Two Cities";
         public static string SIMPLE_PRODUCT = "Broad St. Flapover Briefcase";
+        public static string WISHLIST_PRODUCT = "Racer Back Maxi Dress";
     }
 }

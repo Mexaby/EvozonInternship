@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using MsTests.Helpers;
 using MsTests.Helpers.Enums;
-using OpenQA.Selenium;
+using NsTestFrameworkUI.Helpers;
 
 namespace MsTests.Tests
 {
@@ -12,9 +12,9 @@ namespace MsTests.Tests
         public void AddItemToWishlistWithoutLogin()
         {
             Pages.HeaderPage.NavigateToSubcategoryFromDropdown(Category.WOMEN, Subcategory.Women.DRESSES_AND_SKIRTS);
-            Pages.SubcategoryProductsPage.AddItemToWishlistFromSubategoryPage(3);
+            Pages.ProductsPage.AddProductToWishlist(Constants.WISHLIST_PRODUCT);
 
-            //TODO asserts
+            Browser.WebDriver.Url.Should().Be("http://qa2magento.dev.evozon.com/customer/account/login/");
         }
     }
 }
