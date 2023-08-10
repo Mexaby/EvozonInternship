@@ -12,16 +12,15 @@ namespace MsTests.Tests
         public override void Before()
         {
             base.Before();
-            Pages.HeaderPage.GoToAccountDropdownOption(AccountOption.LOG_IN);
+            Pages.HeaderPage.NavigateToAccountDropdownOption(AccountOption.LOG_IN);
         }
 
-        [DataRow(Constants.VALID_EMAIL, Constants.VALID_PASSWORD)]
         [TestMethod]
-        public void LoginWithValidCredentials(string email, string password)
+        public void UserIsAbleToLogin()
         {
-            Pages.LoginPage.Login(email, password);
-            Pages.AccountPage.IsUserLoggedIn().Should().Contain(Constants.VALID_FULL_NAME);
-            Pages.HeaderPage.GetWelcomeMessage().Should().Be(Constants.HEADER_LOGGED_OUT_MESSAGE);
+            Pages.LoginPage.Login(Constants.VALID_EMAIL, Constants.VALID_PASSWORD);
+            Pages.AccountPage.GetWelcomeMessage().Should().Contain(Constants.VALID_FULL_NAME);
+            Pages.HeaderPage.GetWelcomeMessage().Should().Be(Constants.HEADER_LOGGED_IN_MESSAGE);
             Pages.HeaderPage.IsAccountOptionAvailable(AccountOption.LOG_IN).Should().BeFalse();
             Pages.HeaderPage.IsAccountOptionAvailable(AccountOption.LOG_OUT).Should().BeTrue();
         }
@@ -37,11 +36,11 @@ namespace MsTests.Tests
 
         [DynamicData(nameof(ErrorMessageData), DynamicDataSourceType.Method)]
         [TestMethod]
-        public void LoginWithInvalidCredentialsWhichDisplayErrorMessage(string email, string password)
+        public void UserReceivesErrorOnLogin(string email, string password)
         {
             Pages.LoginPage.Login(email, password);
             Pages.LoginPage.IsErrorMessageDisplayed().Should().BeTrue();
-            Pages.HeaderPage.GetWelcomeMessage().Should().Be(Constants.HEADER_LOGGED_IN_MESSAGE);
+            Pages.HeaderPage.GetWelcomeMessage().Should().Be(Constants.HEADER_LOGGED_OUT_MESSAGE);
             Pages.HeaderPage.IsAccountOptionAvailable(AccountOption.LOG_OUT).Should().BeFalse();
             Pages.HeaderPage.IsAccountOptionAvailable(AccountOption.LOG_IN).Should().BeTrue();
         }
@@ -57,11 +56,11 @@ namespace MsTests.Tests
 
         [DynamicData(nameof(ValidationAdviceData), DynamicDataSourceType.Method)]
         [TestMethod]
-        public void LoginWithInvalidCredentialsWhichDisplayValidationAdviceMessage(string email, string password)
+        public void UserReceivesAdviceOnLogin(string email, string password)
         {
             Pages.LoginPage.Login(email, password);
             Pages.LoginPage.IsValidationAdviceDisplayed().Should().BeTrue();
-            Pages.HeaderPage.GetWelcomeMessage().Should().Be(Constants.HEADER_LOGGED_IN_MESSAGE);
+            Pages.HeaderPage.GetWelcomeMessage().Should().Be(Constants.HEADER_LOGGED_OUT_MESSAGE);
             Pages.HeaderPage.IsAccountOptionAvailable(AccountOption.LOG_OUT).Should().BeFalse();
             Pages.HeaderPage.IsAccountOptionAvailable(AccountOption.LOG_IN).Should().BeTrue();
         }

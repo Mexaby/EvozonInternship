@@ -9,10 +9,10 @@ namespace MsTests.Tests
     [TestClass]
     public class RegisterTests : BaseTest
     {
-        private NewAccount _newAccount = new NewAccount();
+        private readonly NewAccount _newAccount = new NewAccount();
 
         [TestMethod]
-        public void UserIntroducedValidRegisterCredentials()
+        public void UserIsAbleToRegister()
         {
             Pages.HeaderPage.NavigateToAccountDropdownOption(AccountOption.REGISTER);
             Pages.RegisterPage.Register(_newAccount);

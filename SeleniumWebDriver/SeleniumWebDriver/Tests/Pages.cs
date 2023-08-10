@@ -12,7 +12,6 @@ namespace MsTests.Tests
         public static SubcategoryProductsPage SubcategoryProductsPage => PageHelpers.InitPage(new SubcategoryProductsPage());
         public static LoginPage LoginPage => PageHelpers.InitPage(new LoginPage());
         public static RegisterPage RegisterPage => PageHelpers.InitPage(new RegisterPage());
-        public static CategoryPage CategoryPage => PageHelpers.InitPage(new CategoryPage());
         public static ConfigurableItemDetailsPage ConfigurableItemDetailsPage => PageHelpers.InitPage(new ConfigurableItemDetailsPage());
         public static AdminPage AdminPage => PageHelpers.InitPage(new AdminPage());
         public static WishlistPage WishlistPage => PageHelpers.InitPage(new WishlistPage());

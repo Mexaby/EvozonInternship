@@ -11,10 +11,10 @@ namespace MsTests.Helpers
     {
         public static string VALID_EMAIL = "asdf@asdf.com";
         public static string VALID_PASSWORD = "111111";
-        public const string VALID_FULL_NAME = "asdasd asdasd";
+        public const string VALID_FULL_NAME = "Andrew 123 Tate";
 
-        public const string LOGIN_HELLO_MESSAGE = "Hello, asdasd asdasd!";
-        public const string HEADER_LOGGED_IN_MESSAGE = "WELCOME, ASDASD ASDASD!";
+        public const string LOGIN_HELLO_MESSAGE = "Hello, Andrew 123 Tate!";
+        public const string HEADER_LOGGED_IN_MESSAGE = "WELCOME, ANDREW 123 TATE!";
         public const string HEADER_LOGGED_OUT_MESSAGE = "WELCOME";
         public const string LOGOUT_MESSAGE = "YOU ARE NOW LOGGED OUT";
 

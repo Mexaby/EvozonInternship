@@ -16,9 +16,9 @@ namespace MsTests.Pages
 
         #endregion
 
-        public void Login(string userEmail, string password)
+        public void Login(string email, string password)
         {
-            _emailField.ActionSendKeys(userEmail);
+            _emailField.ActionSendKeys(email);
             _passwordField.ActionSendKeys(password);
             _loginButton.ActionClick();
         }

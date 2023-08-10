@@ -13,7 +13,6 @@ namespace MsTests.Pages
     {
         #region Selectors
 
-        private readonly By _homeLogoButton = By.CssSelector("a.logo");
         private readonly By _accountButton = By.CssSelector("a.skip-link.skip-account");
         private readonly By _accountOptionsDropdown = By.CssSelector("#header-account li a");
 
@@ -34,11 +33,6 @@ namespace MsTests.Pages
             var selectedOption =
                 _accountOptionsDropdown.GetElements().First(o => o.GetAttribute("title").Equals(option.GetDescription()));
             selectedOption.Click();
-        }
-
-        public void GoToHomepage()
-        {
-            _homeLogoButton.ActionClick();
         }
 
         public void NavigateToSubcategoryFromDropdown(Category categoryTitle, Enum subcategoryTitle)
